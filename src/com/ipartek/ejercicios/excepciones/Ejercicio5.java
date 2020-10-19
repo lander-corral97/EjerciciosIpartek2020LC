@@ -1,4 +1,4 @@
-package com.ipartek.ejercicio.excepciones;
+package com.ipartek.ejercicios.excepciones;
 
 import java.io.IOException;
 

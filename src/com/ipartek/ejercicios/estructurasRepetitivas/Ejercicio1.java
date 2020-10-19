@@ -1,4 +1,4 @@
-package com.ipartek.ejercicio.estructurasRepetitivas;
+package com.ipartek.ejercicios.estructurasRepetitivas;
 
 /**
  * Realizar un ejercicio que nos muestre la tabla de multiplicar del 6

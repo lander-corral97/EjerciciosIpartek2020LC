@@ -1,4 +1,4 @@
-package com.ipartek.ejercicio.estructurasRepetitivas;
+package com.ipartek.ejercicios.estructurasRepetitivas;
 
 /**
  * Mostrar con bucles for anidados las tablas de multiplicar del 0 al 10

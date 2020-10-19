@@ -1,4 +1,4 @@
-package com.ipartek.ejercicio.estructurasRepetitivas;
+package com.ipartek.ejercicios.estructurasRepetitivas;
 
 import java.util.Scanner;
 
