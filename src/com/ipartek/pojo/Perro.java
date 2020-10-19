@@ -23,6 +23,13 @@ public class Perro {
 		this.historia = "-";
 	}
 
+	// Otro constructor (Sobrecarga)
+	/////////////////////////////////////////////////////
+	public Perro(String nombre) {
+		this(); // Llama al constructor por defecto
+		this.nombre = nombre;
+	}
+
 	// Getters y Setters
 	/////////////////////////////////////////////////////
 

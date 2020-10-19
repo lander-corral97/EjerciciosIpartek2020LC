@@ -20,6 +20,7 @@ public class Ejercicio1 {
 
 		Perro perros[] = new Perro[8];
 
+		// Con un constructor vacío
 		for (int i = 0; i < perros.length; i++) {
 			perros[i] = new Perro();
 		}
