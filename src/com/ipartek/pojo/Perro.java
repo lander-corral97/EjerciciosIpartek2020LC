@@ -1,5 +1,14 @@
 package com.ipartek.pojo;
 
+/**
+ * 
+ * Clase para representar a un perro
+ * 
+ * @version 1.0
+ * @author LANDER
+ *
+ */
+
 public class Perro {
 
 	// Atributos

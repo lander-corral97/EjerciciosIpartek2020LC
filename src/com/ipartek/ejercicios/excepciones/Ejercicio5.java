@@ -46,10 +46,12 @@ public class Ejercicio5 {
 	}
 
 	public static void main(String[] args) {
-		try {
-			randomExc();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		while (true) { // Bucle infinito
+			try {
+				randomExc();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
 	}
 
