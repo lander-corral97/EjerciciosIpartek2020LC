@@ -11,14 +11,15 @@ package com.ipartek.pojo;
 
 public class Persona {
 
-	private String nombre;
-	private int edad;
 	private static final int EDAD_MIN = 0;
 	private static final int EDAD_MAX = 120;
 
+	private String nombre;
+	private int edad;
+
 	public Persona() {
 		super();
-		this.edad = 0;
+		this.edad = EDAD_MIN;
 		this.nombre = "";
 	}
 
@@ -36,10 +37,17 @@ public class Persona {
 
 	public void setEdad(int edad) throws Exception {
 		if (edad < EDAD_MIN || edad > EDAD_MAX) {
-			throw new Exception("Has introducido una edad incorrecta (debe ser entre 1 y 120)");
+			throw new Exception(
+					String.format("Has introducido una edad incorrecta (debe ser entre %s y %s)", EDAD_MIN, EDAD_MAX));
 		} else {
 			this.edad = edad;
 		}
 	}
 
+	// Muestra los datos del objeto en forma de String
+	// Se llama directamente
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", edad=" + edad + "]";
+	}
 }

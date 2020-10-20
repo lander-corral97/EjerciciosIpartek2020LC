@@ -1,11 +1,11 @@
 package com.ipartek.ejercicios.excepciones;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.ipartek.pojo.Persona;
 
 /**
- * 
  * Crea una clase Persona con los atributos nombre y edad. En el método setEdad
  * lanzar una excepción si la edad introducida es menor que 0 o mayor que
  * 120.</br>
@@ -22,18 +22,31 @@ import com.ipartek.pojo.Persona;
 public class Ejercicio4 {
 
 	public static void main(String[] args) {
-		Persona p = new Persona();
+
+		ArrayList<Persona> personas = new ArrayList<Persona>();
+		Persona p;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Introduce el nombre");
-		p.setNombre(sc.nextLine());
-		System.out.println("Introduce la edad");
-		try {
-			p.setEdad(Integer.parseInt(sc.nextLine()));
-			System.out.printf("Datos guardados\nNombre: %s\nEdad: %s Años", p.getNombre(), p.getEdad());
-		} catch (NumberFormatException e) {
-			System.err.println("Error: No has introducido un número");
-		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
+		boolean isAnadir = true;
+		while (isAnadir) {
+			p = new Persona();
+			System.out.println("Introduce el nombre");
+			p.setNombre(sc.nextLine());
+			System.out.println("Introduce la edad");
+			try {
+				p.setEdad(Integer.parseInt(sc.nextLine()));
+				personas.add(p);
+			} catch (NumberFormatException e) {
+				System.err.println("Error: No has introducido un número");
+			} catch (Exception e) {
+				System.err.println("Error: " + e.getMessage());
+			}
+			System.out.println("¿Desea continuar añadiendo personas? (Sí: S/ No: N)");
+			if (sc.nextLine().equalsIgnoreCase("n")) {
+				isAnadir = false;
+			}
+		}
+		for (Persona pers : personas) {
+			System.out.printf("Datos guardados\nNombre: %s\nEdad: %s Años\n", pers.getNombre(), pers.getEdad());
 		}
 		sc.close();
 	}
