@@ -30,7 +30,7 @@ public class AppFutbolistas {
 
 	public static void main(String[] args) {
 
-		System.out.println("Futbolistas_____________________________");
+		System.out.println("Futbolistas");
 
 		sc = new Scanner(System.in);
 		try {
@@ -77,7 +77,7 @@ public class AppFutbolistas {
 			}
 		}
 
-		System.out.println("¡Hasta otra!____________________________");
+		System.out.println("¡Hasta otra!");
 	}
 
 	/**
