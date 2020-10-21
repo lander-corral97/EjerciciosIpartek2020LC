@@ -9,10 +9,18 @@ public class AppFutbolistas {
 
 	// Constantes para el menú principal
 	static final String LISTA = "1";
-	static final String ANADIR = "2";
-	static final String MODIFICAR = "3";
-	static final String BORRAR = "4";
-	static final String SALIR = "5";
+	static final String LISTA_POR_NAC = "2";
+	static final String LISTA_MAY_MEN_EDAD = "3"; // Constante para el método de mayor/menor de una edad
+	static final String ANADIR = "4";
+	static final String MODIFICAR = "5";
+	static final String BORRAR = "6";
+	static final String SALIR = "7";
+
+	/*
+	 * Constante para el método de modificación. Cuando te lista todos los
+	 * jugadores, van de 1 al máximo de coincidencias. Esta constante es el número
+	 * mínimo, es decir 1.
+	 */
 	static final int MIN_MODIFICAR = 1;
 
 	// Constantes para la modificación
@@ -22,6 +30,10 @@ public class AppFutbolistas {
 	static final int NACIONALIDAD = 4;
 	static final int EQUIPO = 5;
 	static final int NO_MODIFICAR = 6;
+
+	// Constante para listar mayor o menor de...
+	static final String MAYOR = ">";
+	static final String MENOR = "<";
 
 	static ArrayList<Futbolista> futs = new ArrayList<Futbolista>();
 	static Scanner sc = null;
@@ -45,6 +57,18 @@ public class AppFutbolistas {
 
 			case LISTA:
 				listar();
+				break;
+
+			case LISTA_POR_NAC:
+				listarPorNacionalidad();
+				break;
+
+			case LISTA_MAY_MEN_EDAD:
+				try {
+					listarMayorOMenorDeEdad();
+				} catch (Exception e) {
+					System.err.println("Error: " + e.getMessage());
+				}
 				break;
 
 			case ANADIR:
@@ -76,8 +100,96 @@ public class AppFutbolistas {
 				break;
 			}
 		}
+		sc.close();
 
 		System.out.println("¡Hasta otra!");
+	}
+
+	/**
+	 * Lista los jugadores que sean mayor o menor de una edad que da el usuario.
+	 */
+	private static void listarMayorOMenorDeEdad() throws Exception {
+		System.out.println("Introduce una edad");
+		int edad = 0;
+		try {
+			edad = Integer.parseInt(sc.nextLine());
+			String mayMen = "";
+			System.out.printf("Introduce si debe buscar jugadores mayores o menores a %s (< = menor, > = mayor)\n",
+					edad);
+			mayMen = sc.nextLine();
+			ArrayList<Futbolista> arrayFutOrdenadoPorEdad = new ArrayList<Futbolista>();
+			switch (mayMen) {
+			case MAYOR:
+				for (Futbolista fut : futs) {
+					if (fut.getEdad() > edad) {
+						arrayFutOrdenadoPorEdad.add(fut);
+						arrayFutOrdenadoPorEdad = ordenarListaPorEdad(arrayFutOrdenadoPorEdad);
+					}
+				}
+				break;
+
+			case MENOR:
+				for (Futbolista fut : futs) {
+					if (fut.getEdad() < edad) {
+						arrayFutOrdenadoPorEdad.add(fut);
+						arrayFutOrdenadoPorEdad = ordenarListaPorEdad(arrayFutOrdenadoPorEdad);
+					}
+				}
+				break;
+
+			default:
+				throw new Exception("Sólo puede introducir los siguientes caracteres: <, >");
+			}
+			if (arrayFutOrdenadoPorEdad.size() == 0) {
+				System.out.println("No se ha encontrado ningún resultado");
+			} else {
+				for (Futbolista fut : arrayFutOrdenadoPorEdad) {
+					System.out.println(fut);
+				}
+			}
+		} catch (NumberFormatException e) {
+			throw new Exception("No has introducido un número");
+		}
+	}
+
+	/**
+	 * Ordena un array por orden de edad
+	 * 
+	 * @param futs
+	 * @return ArrayList
+	 */
+	private static ArrayList<Futbolista> ordenarListaPorEdad(ArrayList<Futbolista> futs) {
+		Futbolista temp;
+		for (int i = 0; i < futs.size() - 1; i++) {
+			for (int j = i + 1; j < futs.size(); j++) {
+				if (futs.get(i).getEdad() > futs.get(j).getEdad()) {
+					temp = futs.get(i);
+					futs.set(i, futs.get(j));
+					futs.set(j, temp);
+				}
+			}
+		}
+		return futs;
+	}
+
+	/**
+	 * Lista los jugadores de cierta nacionalidad
+	 */
+	private static void listarPorNacionalidad() {
+		System.out.println("Introduce una nacionalidad");
+		String nac = sc.nextLine();
+		int numResultados = 0;
+
+		for (Futbolista fut : futs) {
+			if (nac.equalsIgnoreCase(fut.getNacionalidad())) {
+				System.out.println(fut);
+				numResultados++;
+			}
+		}
+
+		if (numResultados == 0) {
+			System.out.println("No se ha encontrado a ningún jugador con dicha nacionalidad");
+		}
 	}
 
 	/**
@@ -326,10 +438,12 @@ public class AppFutbolistas {
 	private static void pintarMenu() {
 		System.out.println("________________________________________");
 		System.out.println("1.- Listar futbolistas");
-		System.out.println("2.- Añadir un futbolista");
-		System.out.println("3.- Modificar un futbolista");
-		System.out.println("4.- Eliminar un futbolista");
-		System.out.println("5.- Salir");
+		System.out.println("2.- Mostrar futbolistas de una nacionalidad");
+		System.out.println("3.- Mostrar futbolistas con edad mayor/menor de x años");
+		System.out.println("4.- Añadir un futbolista");
+		System.out.println("5.- Modificar un futbolista");
+		System.out.println("6.- Eliminar un futbolista");
+		System.out.println("7.- Salir");
 		System.out.println("________________________________________");
 
 		opt = sc.nextLine();
