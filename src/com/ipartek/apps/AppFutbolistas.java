@@ -5,40 +5,61 @@ import java.util.Scanner;
 
 import com.ipartek.pojo.Futbolista;
 
+/**
+ * Aplicación de futbolistas para practicar el CRUD con las siguientes
+ * funcionalidades.
+ * 
+ * <ul>
+ * <li>Listar jugadores</li>
+ * <li>Listar jugadores de cierta nacionalidad</li>
+ * <li>Listar jugadores mayores o menores de cierta edad</li>
+ * <li>Añadir jugador</li>
+ * <li>Modificar jugador</li>
+ * <li>Borrar jugador</li>
+ * <li>Ordenar la lista alfabéticamente</li>
+ * <li>Salir</li>
+ * </ul>
+ * 
+ * @author LANDER
+ *
+ */
 public class AppFutbolistas {
 
+	// TODO Cambiar todas las variables a privadas
+
 	// Constantes para el menú principal
-	static final String LISTA = "1";
-	static final String LISTA_POR_NAC = "2";
-	static final String LISTA_MAY_MEN_EDAD = "3"; // Constante para el método de mayor/menor de una edad
-	static final String ANADIR = "4";
-	static final String MODIFICAR = "5";
-	static final String BORRAR = "6";
-	static final String SALIR = "7";
+	static final private String LISTA = "1";
+	static final private String LISTA_POR_NAC = "2";
+	static final private String LISTA_MAY_MEN_EDAD = "3"; // Constante para el método de mayor/menor de una edad
+	static final private String ANADIR = "4";
+	static final private String MODIFICAR = "5";
+	static final private String BORRAR = "6";
+	static final private String ORDENAR_LISTA_ALF = "7"; // Ordena alfabeticamente la lista
+	static final private String SALIR = "8";
 
 	/*
 	 * Constante para el método de modificación. Cuando te lista todos los
 	 * jugadores, van de 1 al máximo de coincidencias. Esta constante es el número
 	 * mínimo, es decir 1.
 	 */
-	static final int MIN_MODIFICAR = 1;
+	static final private int MIN_MODIFICAR = 1;
 
 	// Constantes para la modificación
-	static final int NOMBRE = 1;
-	static final int EDAD = 2;
-	static final int ALTURA = 3;
-	static final int NACIONALIDAD = 4;
-	static final int EQUIPO = 5;
-	static final int NO_MODIFICAR = 6;
+	static final private int NOMBRE = 1;
+	static final private int EDAD = 2;
+	static final private int ALTURA = 3;
+	static final private int NACIONALIDAD = 4;
+	static final private int EQUIPO = 5;
+	static final private int NO_MODIFICAR = 6;
 
 	// Constante para listar mayor o menor de...
-	static final String MAYOR = ">";
-	static final String MENOR = "<";
+	static final private String MAYOR = ">";
+	static final private String MENOR = "<";
 
-	static ArrayList<Futbolista> futs = new ArrayList<Futbolista>();
-	static Scanner sc = null;
-	static String opt = "";
-	static boolean isContinuar = true;
+	static private ArrayList<Futbolista> futs = new ArrayList<Futbolista>();
+	static private Scanner sc = null;
+	static private String opt = "";
+	static private boolean isContinuar = true;
 
 	public static void main(String[] args) {
 
@@ -95,8 +116,16 @@ public class AppFutbolistas {
 				}
 				break;
 
+			case ORDENAR_LISTA_ALF:
+				ordenarListaAlfabeticamente();
+				break;
+
 			case SALIR:
 				isContinuar = false;
+				break;
+
+			default:
+				System.err.println("Opción incorrecta");
 				break;
 			}
 		}
@@ -106,18 +135,36 @@ public class AppFutbolistas {
 	}
 
 	/**
+	 * Ordena la lista alfabéticamente en orden ascendente
+	 */
+	private static void ordenarListaAlfabeticamente() {
+		Futbolista temp = new Futbolista();
+		for (int i = 0; i < futs.size() - 1; i++) {
+			for (int j = i + 1; j < futs.size(); j++) {
+				if (futs.get(i).getNombre().compareTo(futs.get(j).getNombre()) > 0) {
+					temp = futs.get(i);
+					futs.set(i, futs.get(j));
+					futs.set(j, temp);
+				}
+			}
+		}
+	}
+
+	/**
 	 * Lista los jugadores que sean mayor o menor de una edad que da el usuario.
 	 */
 	private static void listarMayorOMenorDeEdad() throws Exception {
 		System.out.println("Introduce una edad");
+
 		int edad = 0;
+		String mayMen = "";
+		ArrayList<Futbolista> arrayFutOrdenadoPorEdad = new ArrayList<Futbolista>();
+
 		try {
 			edad = Integer.parseInt(sc.nextLine());
-			String mayMen = "";
 			System.out.printf("Introduce si debe buscar jugadores mayores o menores a %s (< = menor, > = mayor)\n",
 					edad);
 			mayMen = sc.nextLine();
-			ArrayList<Futbolista> arrayFutOrdenadoPorEdad = new ArrayList<Futbolista>();
 			switch (mayMen) {
 			case MAYOR:
 				for (Futbolista fut : futs) {
@@ -160,6 +207,7 @@ public class AppFutbolistas {
 	 */
 	private static ArrayList<Futbolista> ordenarListaPorEdad(ArrayList<Futbolista> futs) {
 		Futbolista temp;
+
 		for (int i = 0; i < futs.size() - 1; i++) {
 			for (int j = i + 1; j < futs.size(); j++) {
 				if (futs.get(i).getEdad() > futs.get(j).getEdad()) {
@@ -177,6 +225,7 @@ public class AppFutbolistas {
 	 */
 	private static void listarPorNacionalidad() {
 		System.out.println("Introduce una nacionalidad");
+
 		String nac = sc.nextLine();
 		int numResultados = 0;
 
@@ -202,6 +251,11 @@ public class AppFutbolistas {
 
 		String busqueda = sc.nextLine();
 		ArrayList<Futbolista> futCoinciden = new ArrayList<Futbolista>();
+		int futElegido = 0; // Opción elegida entre los jugadores que coincidían
+		futElegido = 0;
+		Futbolista futSeleccionado = new Futbolista();
+		int indiceEnArrayOriginal = 0;
+		String siNo = "";
 
 		// Busca los futbolistas cuyos nombre contienen el String de búsqueda
 		for (Futbolista fut : futs) {
@@ -209,8 +263,6 @@ public class AppFutbolistas {
 				futCoinciden.add(fut);
 			}
 		}
-
-		int futElegido = 0; // Opción elegida entre los jugadores que coincidían
 
 		if (!futCoinciden.isEmpty()) {
 
@@ -228,22 +280,19 @@ public class AppFutbolistas {
 			System.out.println("Introduce a quién quieres borrar");
 
 			try {
-
+				futElegido = Integer.parseInt(sc.nextLine());
 				/*
 				 * Aquí eliges qué futbolista eliges de los que contienen el parámetro de
 				 * búsqueda. El número debe estar entre el 1 y el tamaño del array (ambos
 				 * incluidos), ya que en el bucle anterior va listando de 1 al size() del array.
 				 */
-				futElegido = Integer.parseInt(sc.nextLine());
 				if (futElegido < 1 || futElegido > futCoinciden.size()) {
 
 					throw new Exception(
 							String.format("El número que has introducido no está en el rango indicado: %s y %s",
 									MIN_MODIFICAR, futCoinciden.size()));
 				} else {
-					Futbolista futSeleccionado = futCoinciden.get(futElegido - 1);
-					int indiceEnArrayOriginal = 0;
-					String siNo = "";
+					futSeleccionado = futCoinciden.get(futElegido - 1);
 
 					// Buscamos en el array original el índice del futbolista
 					for (int i = 0; i < futs.size(); i++) {
@@ -280,6 +329,10 @@ public class AppFutbolistas {
 
 		String busqueda = sc.nextLine(); // Nombre a buscar
 		ArrayList<Futbolista> futCoinciden = new ArrayList<Futbolista>();
+		int futElegido = 0; // Opción elegida entre los jugadores que coincidían
+		Futbolista futSeleccionado = new Futbolista();
+		int indiceEnArrayOriginal = 0;
+		int campoAModificar = 0; // Variable que identifica el campo a modificar
 
 		// Busca los futbolistas cuyos nombre contienen el String de búsqueda
 		for (Futbolista fut : futs) {
@@ -287,8 +340,6 @@ public class AppFutbolistas {
 				futCoinciden.add(fut);
 			}
 		}
-
-		int futElegido = 0; // Opción elegida entre los jugadores que coincidían
 
 		if (!futCoinciden.isEmpty()) {
 
@@ -318,8 +369,7 @@ public class AppFutbolistas {
 							String.format("El número que has introducido no está en el rango indicado: %s y %s",
 									MIN_MODIFICAR, futCoinciden.size()));
 				} else {
-					Futbolista futSeleccionado = futCoinciden.get(futElegido - 1);
-					int indiceEnArrayOriginal = 0;
+					futSeleccionado = futCoinciden.get(futElegido - 1);
 
 					// Buscamos en el array original el índice del futbolista
 					for (int i = 0; i < futs.size(); i++) {
@@ -332,7 +382,6 @@ public class AppFutbolistas {
 					System.out.printf("El futbolista seleccionado es %s\n", futSeleccionado.getNombre());
 					System.out.println("________________________________________");
 
-					int campoAModificar = 0; // Variable que identifica el campo a modificar
 					do {
 						System.out.println("Selecciona el campo a modificar");
 						System.out.println("________________________________________");
@@ -443,7 +492,8 @@ public class AppFutbolistas {
 		System.out.println("4.- Añadir un futbolista");
 		System.out.println("5.- Modificar un futbolista");
 		System.out.println("6.- Eliminar un futbolista");
-		System.out.println("7.- Salir");
+		System.out.println("7.- Ordenar lista alfabéticamente");
+		System.out.println("8.- Salir");
 		System.out.println("________________________________________");
 
 		opt = sc.nextLine();
