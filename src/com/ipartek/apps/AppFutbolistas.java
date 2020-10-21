@@ -141,7 +141,7 @@ public class AppFutbolistas {
 						}
 					}
 
-					System.out.printf("¿Quieres borrar a %s de la lista? (S/N)", futSeleccionado.getNombre());
+					System.out.printf("¿Quieres borrar a %s de la lista? (S/N)\n", futSeleccionado.getNombre());
 					siNo = sc.nextLine();
 
 					if (siNo.equalsIgnoreCase("s")) {
