@@ -1,7 +1,7 @@
 package com.ipartek.ejercicios.estructurasCondicionales;
 
 /**
- * Realizar un programa que realice la siguiente funcionalidad<br/>
+ * Realizar un programa que realice la siguiente funcionalidad<br>
  * Se crearan 5 variables enteras con los nombres a, b, c, d y e con los valores
  * 6, 8, 0, 8 y 9
  * <ul>

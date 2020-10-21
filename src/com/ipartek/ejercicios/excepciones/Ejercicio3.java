@@ -7,7 +7,7 @@ import java.util.Scanner;
  * la letra de la posición indicada. Llámelo pasando como parámetro un String
  * sin inicializar. Dicha llamada se encontrara dentro de un bloque try catch,
  * que en caso de producirse una excepción por un paso de parámetros a null, no
- * acabe con la ejecución del programa. <br/>
+ * acabe con la ejecución del programa. <br>
  * Así mismo, se controlara también que si el numero pasado es mayor que el
  * tamaño del string, capturara el error y nos solicitara meter un numero
  * valido, indicándonos los valores en los que puede estar comprendido (para

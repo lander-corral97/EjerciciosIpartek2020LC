@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * 
  * Realice un programa que nos solicite por teclado dos números, y leerlos
- * usando la clase Scanner mediante la función nextLine(). </br>
+ * usando la clase Scanner mediante la función nextLine(). <br>
  * Transformar ambos strings a números enteros usando la siguiente sentencia
  * Integer.parseInt(numeroLeido). Agrupar el código entre un bloque try catch y
  * procesar para que no se produzca una interrupción y finalización del programa

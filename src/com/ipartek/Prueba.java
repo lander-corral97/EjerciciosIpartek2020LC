@@ -20,7 +20,6 @@ public class Prueba {
 	 * 
 	 * @param args
 	 */
-
 	public static void main(String[] args) {
 		String nombre = "Lander";
 		int edad = 23;

@@ -6,10 +6,10 @@ import java.util.Scanner;
  * 
  * Realizar un programa que pida por teclado las notas de un alumno. Dichas
  * notas se guardarán en formato entero, en un array de 8 posiciones,
- * totales.</br>
+ * totales.<br>
  * Se solicitará la nota del alumno, y se guardará en el array. Una vez
  * introducida se preguntará si se desean introducir más notas. Si la respuesta
- * es si, se continuara metiendo notas en el array</br>
+ * es si, se continuara metiendo notas en el array<br>
  * Tener cuidado, solo se podrán meter 8 notas. No se deberá dejar éter una
  * novena
  * 

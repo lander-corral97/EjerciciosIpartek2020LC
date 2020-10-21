@@ -6,7 +6,7 @@ import java.util.Scanner;
  * 
  * Implemente un programa que lea un número ‘a’ y otro número ‘b’ y luego
  * calcule “a/b”. Pruebe a introducir b=0 y ver que hace el programa con la
- * división por cero.</br>
+ * división por cero.<br>
  * Pruebe a introducir b=”Carlos” para ver cómo se comporta el programa. Añada
  * excepciones para recoger estas excepciones y avisar del problema al usuario
  * 

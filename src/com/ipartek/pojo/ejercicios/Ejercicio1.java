@@ -4,9 +4,9 @@ import com.ipartek.pojo.Perro;
 
 /**
  * 
- * La historia de los 8 perros más famosos. </br>
+ * La historia de los 8 perros más famosos. <br>
  * Crear 8 perros con su constructor por defecto y setear el nombre e
- * historia.</br>
+ * historia.<br>
  * Mostrar por pantalla sus nombres e historias
  * 
  * @see https://blog.patasbox.com/los-8-perros-mas-fomos-de-la-historia/

@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * 
  * Realizar un programa que lance un número aleatorio del 1 al 6. Según el
- * número sacado, se lanzara una excepción u otra de la siguiente lista:</br>
+ * número sacado, se lanzara una excepción u otra de la siguiente lista:
  * <ul>
  * <li>1: ArithmeticException</li>
  * <li>2: NullpointerException</li>

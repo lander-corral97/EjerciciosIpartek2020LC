@@ -63,7 +63,7 @@ public class AppFutbolistas {
 
 	public static void main(String[] args) {
 
-		System.out.println("Futbolistas");
+		System.out.println("--------------Futbolistas--------------");
 
 		sc = new Scanner(System.in);
 		try {
@@ -131,7 +131,7 @@ public class AppFutbolistas {
 		}
 		sc.close();
 
-		System.out.println("¡Hasta otra!");
+		System.out.println("----------------¡Adiós!----------------");
 	}
 
 	/**
@@ -380,18 +380,18 @@ public class AppFutbolistas {
 					}
 
 					System.out.printf("El futbolista seleccionado es %s\n", futSeleccionado.getNombre());
-					System.out.println("________________________________________");
+					System.out.println("_______________________________________");
 
 					do {
 						System.out.println("Selecciona el campo a modificar");
-						System.out.println("________________________________________");
+						System.out.println("_______________________________________");
 						System.out.println("1.- Nombre");
 						System.out.println("2.- Edad");
 						System.out.println("3.- Altura");
 						System.out.println("4.- Nacionalidad");
 						System.out.println("5.- Equipo");
 						System.out.println("6.- Terminar de modificar");
-						System.out.println("________________________________________");
+						System.out.println("_______________________________________");
 						campoAModificar = Integer.parseInt(sc.nextLine());
 						switch (campoAModificar) {
 
@@ -485,7 +485,7 @@ public class AppFutbolistas {
 	 * </ul>
 	 */
 	private static void pintarMenu() {
-		System.out.println("________________________________________");
+		System.out.println("_______________________________________");
 		System.out.println("1.- Listar futbolistas");
 		System.out.println("2.- Mostrar futbolistas de una nacionalidad");
 		System.out.println("3.- Mostrar futbolistas con edad mayor/menor de x años");
@@ -494,7 +494,7 @@ public class AppFutbolistas {
 		System.out.println("6.- Eliminar un futbolista");
 		System.out.println("7.- Ordenar lista alfabéticamente");
 		System.out.println("8.- Salir");
-		System.out.println("________________________________________");
+		System.out.println("_______________________________________");
 
 		opt = sc.nextLine();
 	}

@@ -3,7 +3,7 @@ package com.ipartek.ejercicios.estructurasCondicionales;
 import java.util.Scanner;
 
 /**
- * Pedir por teclado al usuario que introduzca una distancia en cm<br/>
+ * Pedir por teclado al usuario que introduzca una distancia en cm<br>
  * Una vez introducida, se solicitará que escoja a que unidad se van a
  * convertir, introduciendo la opción por teclado
  * <ul>

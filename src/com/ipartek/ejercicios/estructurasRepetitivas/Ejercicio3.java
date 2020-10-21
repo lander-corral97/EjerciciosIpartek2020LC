@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 /**
  * 
- * Realizar el siguiente menú:</br>
- * Introduzca una opción:</br>
- * A. Calcular el área de un cuadrado</br>
- * B. Calcular el área de un triángulo equilátero</br>
- * C. Calcular el perímetro de un circulo</br>
- * D. Calcular el área de un circulo</br>
+ * Realizar el siguiente menú:<br>
+ * Introduzca una opción:<br>
+ * A. Calcular el área de un cuadrado<br>
+ * B. Calcular el área de un triángulo equilátero<br>
+ * C. Calcular el perímetro de un circulo<br>
+ * D. Calcular el área de un circulo<br>
  * Hacer que se repita este menú de manera indefinida
  * 
  * 

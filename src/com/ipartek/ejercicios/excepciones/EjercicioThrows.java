@@ -7,8 +7,8 @@ import com.ipartek.Utilidades;
 /**
  * 
  * Realize un programa que nos solicite los números del dni y nos calcule la
- * letra </br>
- * Usar el método de la clase Utilidades</br>
+ * letra <br>
+ * Usar el método de la clase Utilidades<br>
  * Tenemos que capturar la excepción que nos lanza la función
  * <b>calcularLetraDni</b>
  * 

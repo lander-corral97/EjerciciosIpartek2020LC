@@ -5,8 +5,8 @@ import java.util.Scanner;
 /**
  * 
  * 
- * Mostrar al usuario el siguiente menú:<br/>
- * Por favor escoja una opción:<br/>
+ * Mostrar al usuario el siguiente menú:<br>
+ * Por favor escoja una opción:
  * <ul>
  * <li>A: calcular área de un triangulo</li>
  * <li>B: calcular el área de un cuadrado</li>
@@ -14,7 +14,7 @@ import java.util.Scanner;
  * <li>D: calcular el área de un pentágono</li>
  * </ul>
  * Realizad las operaciones adecuadas indicadas en cada categoría. En caso de
- * que no se escoja una opción adecuada, se mostrara un mensaje de error. <br/>
+ * que no se escoja una opción adecuada, se mostrara un mensaje de error. <br>
  * No deberá realizarse este menú en bucle
  * 
  * 

@@ -3,9 +3,9 @@ package com.ipartek.ejercicios.variablesYoperadores;
 /**
  * Realizar un programa que tenga 2 variables enteras, dividendo y divisor.
  * Meterle valores enteros y positivos. Realizar la operación división y mostrar
- * el resultado en pantalla<br/>
+ * el resultado en pantalla<br>
  * Repetir el mismo código con estas variaciones: entero y real, real y entero,
- * real y real<br/>
+ * real y real<br>
  * Por ultimo, intentar dividir en los cuatro casos anteriores entre 0 y mostrar
  * el resultado en pantalla
  * 

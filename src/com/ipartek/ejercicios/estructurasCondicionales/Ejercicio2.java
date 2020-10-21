@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Realiza un programa que pida un numero por consola. En caso de que el numero
  * sea mayor que 50, o menor que 0, indicar que el numero introducido no es
- * valido<br/>
+ * valido<br>
  * Después, cambiar para que, mientras no te den un número en dicho rango, se
  * repita hasta 3 veces
  * 
