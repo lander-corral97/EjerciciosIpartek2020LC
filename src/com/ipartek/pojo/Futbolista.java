@@ -36,7 +36,7 @@ public class Futbolista {
 	}
 
 	public void setEdad(int edad) throws Exception {
-		if (this.edad < EDAD_MIN || this.edad > EDAD_MAX) {
+		if (edad < EDAD_MIN || edad > EDAD_MAX) {
 			throw new Exception(String.format("Edad incorrecta. Debe ser entre %s y %s", EDAD_MIN, EDAD_MAX));
 		} else {
 			this.edad = edad;
@@ -48,7 +48,7 @@ public class Futbolista {
 	}
 
 	public void setAltura(float altura) throws Exception {
-		if (this.altura < ALTURA_MIN || this.altura > ALTURA_MAX) {
+		if (altura < ALTURA_MIN || altura > ALTURA_MAX) {
 			throw new Exception(String.format("Altura incorrecta. Debe ser entre %s y %s", ALTURA_MIN, ALTURA_MAX));
 		} else {
 			this.altura = altura;
