@@ -8,6 +8,7 @@ public class Futbolista {
 	private static final float ALTURA_MIN = 0.0f;
 	private static final float ALTURA_MAX = 3.0f;
 
+	private int id;
 	private String nombre;
 	private int edad;
 	private float altura;
@@ -16,11 +17,27 @@ public class Futbolista {
 
 	public Futbolista() {
 		super();
+		this.id = 0;
 		this.nombre = "";
 		this.edad = 0;
 		this.altura = 0f;
 		this.nacionalidad = "";
 		this.equipo = "";
+	}
+
+	public Futbolista(int id, String nombre, String equipo) {
+		this();
+		this.id = id;
+		this.nombre = nombre;
+		this.equipo = equipo;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -74,8 +91,8 @@ public class Futbolista {
 	@Override
 	public String toString() {
 		return String.format(
-				"Nombre: %s\nEdad: %s\nAltura: %s m\nNacionalidad: %s\nEquipo: %s\n----------------------------------",
-				this.nombre, this.edad, this.altura, this.nacionalidad, this.equipo);
+				"Id: %s\nNombre: %s\nEdad: %s\nAltura: %s m\nNacionalidad: %s\nEquipo: %s\n----------------------------------",
+				this.id, this.nombre, this.edad, this.altura, this.nacionalidad, this.equipo);
 	}
 
 }

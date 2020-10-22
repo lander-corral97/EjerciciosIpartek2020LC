@@ -31,11 +31,12 @@ public class AppFutbolistas {
 	static final private String LISTA = "1";
 	static final private String LISTA_POR_NAC = "2";
 	static final private String LISTA_MAY_MEN_EDAD = "3"; // Constante para el método de mayor/menor de una edad
-	static final private String ANADIR = "4";
-	static final private String MODIFICAR = "5";
-	static final private String BORRAR = "6";
-	static final private String ORDENAR_LISTA_ALF = "7"; // Ordena alfabeticamente la lista
-	static final private String SALIR = "8";
+	static final private String MOSTRAR_FUT_CON_ID = "4";
+	static final private String ANADIR = "5";
+	static final private String MODIFICAR = "6";
+	static final private String BORRAR = "7";
+	static final private String ORDENAR_LISTA_ALF = "8"; // Ordena alfabeticamente la lista
+	static final private String SALIR = "9";
 
 	/*
 	 * Constante para el método de modificación. Cuando te lista todos los
@@ -92,6 +93,14 @@ public class AppFutbolistas {
 				}
 				break;
 
+			case MOSTRAR_FUT_CON_ID:
+				try {
+					mostrarFutConId();
+				} catch (Exception e) {
+					System.err.println("Error: " + e.getMessage());
+				}
+				break;
+
 			case ANADIR:
 				try {
 					anadir();
@@ -135,6 +144,40 @@ public class AppFutbolistas {
 	}
 
 	/**
+	 * Muestra el futbolista con cierto Id
+	 * 
+	 * @throws Exception
+	 */
+	private static void mostrarFutConId() throws Exception {
+
+		int id = 0;
+		Futbolista futConId = new Futbolista();
+		futConId.setId(-1);
+
+		try {
+
+			id = Integer.parseInt(sc.nextLine());
+
+			for (Futbolista fut : futs) {
+				if (fut.getId() == id) {
+					futConId = fut;
+				}
+			}
+
+			if (futConId.getId() == -1) {
+				System.out.println("No se ha encontrado un futbolista con dicho id");
+			} else {
+				System.out.printf("El futbolista con id=%s es:\n----------------------------------\n", id);
+				System.out.println(futConId);
+			}
+
+		} catch (NumberFormatException e) {
+
+			throw new Exception("Debes introducir un número");
+		}
+	}
+
+	/**
 	 * Ordena la lista alfabéticamente en orden ascendente
 	 */
 	private static void ordenarListaAlfabeticamente() {
@@ -152,6 +195,8 @@ public class AppFutbolistas {
 
 	/**
 	 * Lista los jugadores que sean mayor o menor de una edad que da el usuario.
+	 * 
+	 * @throws Exception
 	 */
 	private static void listarMayorOMenorDeEdad() throws Exception {
 		System.out.println("Introduce una edad");
@@ -245,6 +290,8 @@ public class AppFutbolistas {
 	 * Borra un futbolista de la lista. Busca en base a su nombre, te salen todos
 	 * los que contienen el parámetro de búsqueda. Después eliges de todos los que
 	 * coinciden y el seleccionado se borra.
+	 * 
+	 * @throws Exception
 	 */
 	private static void eliminar() throws Exception {
 		System.out.println("Introduce el nombre del futbolista");
@@ -443,10 +490,22 @@ public class AppFutbolistas {
 
 	/**
 	 * Añade un futbolista a la lista
+	 * 
+	 * @throws Exception
 	 */
 	private static void anadir() throws Exception {
 		Futbolista fut = new Futbolista();
+		int idFut = -1;
+
 		try {
+			// Coger el id del siguiente futbolista
+			for (Futbolista futbolista : futs) {
+				if (idFut < futbolista.getId()) {
+					idFut = futbolista.getId();
+				}
+			}
+			fut.setId(idFut + 1);
+
 			System.out.println("Introduce un nombre");
 			fut.setNombre(sc.nextLine());
 			System.out.println("Introduce la edad [entre 0 y 120]");
@@ -488,12 +547,13 @@ public class AppFutbolistas {
 		System.out.println("_______________________________________");
 		System.out.println("1.- Listar futbolistas");
 		System.out.println("2.- Mostrar futbolistas de una nacionalidad");
-		System.out.println("3.- Mostrar futbolistas con edad mayor/menor de x años");
-		System.out.println("4.- Añadir un futbolista");
-		System.out.println("5.- Modificar un futbolista");
-		System.out.println("6.- Eliminar un futbolista");
-		System.out.println("7.- Ordenar lista alfabéticamente");
-		System.out.println("8.- Salir");
+		System.out.println("3.- Mostrar futbolistas con edad mayor/menor de X años");
+		System.out.println("4.- Mostrar futbolista con id X");
+		System.out.println("5.- Añadir un futbolista");
+		System.out.println("6.- Modificar un futbolista");
+		System.out.println("7.- Eliminar un futbolista");
+		System.out.println("8.- Ordenar lista alfabéticamente");
+		System.out.println("9.- Salir");
 		System.out.println("_______________________________________");
 
 		opt = sc.nextLine();
@@ -507,6 +567,7 @@ public class AppFutbolistas {
 	private static void inicializarLista() throws Exception {
 		for (int i = 0; i < 25; i++) {
 			futs.add(new Futbolista());
+			futs.get(i).setId(i);
 		}
 
 		// pos 0
