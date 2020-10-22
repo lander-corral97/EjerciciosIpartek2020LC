@@ -6,7 +6,7 @@ import com.ipartek.pojo.Perro;
 
 public class PerroDAOArrayList implements PerroDAO {
 
-	private ArrayList<Perro> lista = new ArrayList<Perro>();
+	// private ArrayList<Perro> lista = new ArrayList<Perro>();
 
 	@Override
 	public ArrayList<Perro> listar() {
