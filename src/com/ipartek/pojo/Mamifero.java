@@ -11,9 +11,25 @@ public class Mamifero {
 		JOptionPane.showMessageDialog(null, "Tiene " + patas + " patas \n", nombre, JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	public Mamifero(String nombre, int patas) {
+	public Mamifero(String nombre) {
 		this.nombre = nombre;
+		this.patas = 4;
+	}
+
+	public int getPatas() {
+		return patas;
+	}
+
+	public void setPatas(int patas) {
 		this.patas = patas;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 }
