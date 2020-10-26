@@ -25,7 +25,8 @@ public interface IFunciones {
 	/**
 	 * Imprime los número de la lotería
 	 * 
-	 * @param El tipo de lotería (1: EUROMILLÓN, 2: QUINIELA, 3: BONOLOTO)
+	 * @param tipoLoteria El tipo de lotería (1: EUROMILLÓN, 2: QUINIELA, 3:
+	 *                    BONOLOTO)
 	 * @throws Exception Si el tipoLoteria no existe
 	 */
 	void imprimirNumeroLoteria(int tipoLoteria) throws Exception;
@@ -36,7 +37,7 @@ public interface IFunciones {
 	 * @param dineroEntregado
 	 * @param precioProducto
 	 * @return Float con las vueltas
-	 * @throws Exception Si precioProducto > dineroEntregado
+	 * @throws Exception Si precioProducto es mayor que dineroEntregado
 	 */
 	float calcularVueltas(float dineroEntregado, float precioProducto) throws Exception;
 

@@ -1,9 +1,13 @@
 com.ipartek
+com.ipartek.actividad1
 com.ipartek.apps
 com.ipartek.ejercicios.colecciones
 com.ipartek.ejercicios.estructurasCondicionales
 com.ipartek.ejercicios.estructurasRepetitivas
 com.ipartek.ejercicios.excepciones
+com.ipartek.ejercicios.herencia
+com.ipartek.ejercicios.listas
 com.ipartek.ejercicios.variablesYoperadores
+com.ipartek.modelo
 com.ipartek.pojo
 com.ipartek.pojo.ejercicios

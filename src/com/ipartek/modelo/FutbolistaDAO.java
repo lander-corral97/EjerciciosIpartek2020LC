@@ -15,7 +15,8 @@ public interface FutbolistaDAO {
 	/**
 	 * Lista de futbolistas
 	 * 
-	 * @return Array con los futbolista
+	 * @return Array con los futbolistas
+	 * @throws Exception Si la edad o altura del futbolista es incorrecta
 	 */
 	ArrayList<Futbolista> listar() throws Exception;
 
@@ -77,6 +78,7 @@ public interface FutbolistaDAO {
 	 * @param edad       Edad para comparar
 	 * @param mayorMenor String para saber si comparar como mayor o menor
 	 * @return ArrayList con Futbolistas mayor o menor de dicha edad
+	 * @throws Exception No encuentra futbolistas
 	 */
 	ArrayList<Futbolista> getFutbolistaMayorMenorEdad(int edad, String mayorMenor) throws Exception;
 
