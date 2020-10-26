@@ -58,7 +58,12 @@ public class Ejercicio1 {
 		}
 
 		for (Electrodomestico tele : teles) {
-			System.out.println(tele);
+			// System.out.println(tele);
+			if (tele instanceof TelevisionPlana) {
+				TelevisionPlana tp = (TelevisionPlana) tele;
+				System.out.println("TelevisionPlana [nombre=" + tp.getNombre() + ", precio=" + tp.getPrecio()
+						+ ", pulgada=" + tp.getPulgadas() + ", tipo=" + tp.getTipo() + "]");
+			}
 		}
 
 		sc.close();
