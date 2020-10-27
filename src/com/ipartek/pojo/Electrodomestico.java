@@ -23,6 +23,12 @@ public class Electrodomestico {
 		this.precio = 0f;
 	}
 
+	public Electrodomestico(String nombre, float precio) {
+		super();
+		this.nombre = nombre;
+		this.precio = precio;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
