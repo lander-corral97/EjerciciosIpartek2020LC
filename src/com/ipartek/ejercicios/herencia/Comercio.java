@@ -8,9 +8,15 @@ import com.ipartek.pojo.Servicio;
 
 public class Comercio {
 
+	// Menú principal
 	private static final String NUEVO_STOCK = "1";
 	private static final String VENDER_PROD = "2";
 	private static final String VENDER_SERV = "3";
+
+	// Menú de nuevo stock
+	private static final String DISCO_DURO = "A";
+	private static final String PROCESADOR = "B";
+	private static final String GRAFICA = "C";
 
 	private static ArrayList<Producto> productos = new ArrayList<Producto>();
 	private static ArrayList<Servicio> servicios = new ArrayList<Servicio>();
@@ -28,6 +34,7 @@ public class Comercio {
 			pintarMenu();
 			switch (opc) {
 			case NUEVO_STOCK:
+				nuevoStock();
 				break;
 			case VENDER_PROD:
 				break;
@@ -47,6 +54,18 @@ public class Comercio {
 		} while (isContinuar);
 
 		sc.close();
+	}
+
+	/**
+	 * Añade un nuevo producto a la lista de productos
+	 */
+	private static void nuevoStock() {
+		System.out.println("Introduce el tipo de producto");
+		System.out.println("-----------------------------");
+		System.out.println("A- Disco Duro");
+		System.out.println("B- Procesador");
+		System.out.println("C- Grafica");
+		System.out.println("-----------------------------");
 	}
 
 	/**
