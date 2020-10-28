@@ -22,7 +22,6 @@ public class Jugador {
 
 	public Jugador() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getNombre() {

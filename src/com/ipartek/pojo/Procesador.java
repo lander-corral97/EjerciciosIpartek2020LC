@@ -7,7 +7,6 @@ package com.ipartek.pojo;
  * <ul>
  * <li>modelo: <code>String</code></li>
  * <li>velocidad: <code>int</code></li>
- * <li>isSSD: <code>boolean</code></li>
  * </ul>
  * 
  * @author LANDER

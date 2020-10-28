@@ -20,7 +20,6 @@ public class AppPerrera {
 
 		pintarMenu();
 
-		// TODO Cambiar "1","2","3",... por constantes.
 		switch (opcion) {
 		case "1":
 			listar();
@@ -29,7 +28,6 @@ public class AppPerrera {
 
 		case "3":
 
-			// TODO Resto de opciones
 		}
 
 		System.out.println("********* ADIÓS *********");
@@ -38,7 +36,6 @@ public class AppPerrera {
 
 	private static void listar() {
 		for (Perro perro : perros) {
-			// TODO Dar formato a la salida de los datos
 			System.out.println(perro);
 
 		}
@@ -108,7 +105,6 @@ public class AppPerrera {
 		System.out.println("4.- Salir");
 		System.out.println("******************************");
 
-		// TODO Gestionar errores
 		opcion = sc.nextLine();
 	}
 

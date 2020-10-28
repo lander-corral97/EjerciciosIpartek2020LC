@@ -26,8 +26,6 @@ import com.ipartek.pojo.Futbolista;
  */
 public class AppFutbolistas {
 
-	// TODO Cambiar todas las variables a privadas
-
 	// Constantes para el menú principal
 	static final private String LISTA = "1";
 	static final private String LISTA_POR_NAC = "2";

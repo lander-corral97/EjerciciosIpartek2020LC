@@ -39,13 +39,13 @@ public class BarajaPoker extends Baraja {
 				cartaActual += "As";
 				break;
 			case 11:
-				cartaActual += "J";
+				cartaActual += "Jota";
 				break;
 			case 12:
-				cartaActual += "Q";
+				cartaActual += "Reina";
 				break;
 			case 13:
-				cartaActual += "K";
+				cartaActual += "Rey";
 				break;
 			default:
 				cartaActual += carta.getValor();
