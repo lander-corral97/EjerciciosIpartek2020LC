@@ -2,7 +2,7 @@ package com.ipartek.pojo;
 
 /**
  * Una clase para representar las televisiones planas<br>
- * Es una clase que hereda de <b><code>Television</b></code> que a su vez hereda
+ * Es una clase que hereda de <b><code>Television</code></b> que a su vez hereda
  * de <b><code>Electrodomestico</code></b><br>
  * También tiene el siguiente atributo:
  * <ul>

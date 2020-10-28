@@ -17,7 +17,6 @@ import com.ipartek.pojo.TelevisionPlana;
  *      TelevisionPlana tv = new TelevisionPlana("tele", 300, .., ..  );
  * </pre>
  * 
- * @see EjecicioElectrodomesticos
  * @author ur00
  *
  */

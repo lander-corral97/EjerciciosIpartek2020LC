@@ -9,7 +9,8 @@ import com.ipartek.pojo.Perro;
  * historia.<br>
  * Mostrar por pantalla sus nombres e historias
  * 
- * @see https://blog.patasbox.com/los-8-perros-mas-fomos-de-la-historia/
+ * https://blog.patasbox.com/los-8-perros-mas-fomos-de-la-historia/
+ * 
  * @author LANDER
  *
  */
