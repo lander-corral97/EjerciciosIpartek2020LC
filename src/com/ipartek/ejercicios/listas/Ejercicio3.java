@@ -51,6 +51,8 @@ public class Ejercicio3 {
 				System.err.println("Error: " + e.getMessage());
 				i--;
 			}
+
+			sc.close();
 		}
 
 		for (Impresora impresora : impresoras) {
