@@ -24,9 +24,10 @@ public interface FutbolistaDAO {
 	 * Devuelve el futbolista con dicho id
 	 * 
 	 * @param id Identificador
-	 * @return Futbolista cuyo id es {@code id}
+	 * @return Futbolista cuyo id es {@code id} o null
+	 * @throws Exception Si hay un problema con la BBDD
 	 */
-	Futbolista getFutbolista(int id);
+	Futbolista getFutbolista(int id) throws Exception;
 
 	/**
 	 * Crea un nuevo Futbolista y los mete en el array
@@ -44,8 +45,9 @@ public interface FutbolistaDAO {
 	 * @param busqueda Parte del nombre para buscar en el array
 	 * @return ArrayList con todos los futbolistas que contengan el parámetro
 	 *         {@code busqueda}
+	 * @throws Exception Si hay un problema con la BBDD
 	 */
-	ArrayList<Futbolista> buscarFutbolistaPorNombre(String busqueda);
+	ArrayList<Futbolista> buscarFutbolistaPorNombre(String busqueda) throws Exception;
 
 	/**
 	 * Introduce los nuevos datos del futbolista y los reemplaza por los nuevos
@@ -61,16 +63,18 @@ public interface FutbolistaDAO {
 	 * 
 	 * @param id Identificador
 	 * @return true; si borra, false; si no borra
+	 * @throws Exception Si hay un problema con la BBDD
 	 */
-	boolean borrarFutbolista(int id);
+	boolean borrarFutbolista(int id) throws Exception;
 
 	/**
 	 * Devuelve una lista con dicha nacionalidad
 	 * 
 	 * @param nacionalidad Nacionalidad a buscar
 	 * @return ArrayList con todos los futbolistas de dicha nacionalidad
+	 * @throws Exception Si hay un problema con la BBDD
 	 */
-	ArrayList<Futbolista> getFutbolistaNacionalidad(String nacionalidad);
+	ArrayList<Futbolista> getFutbolistaNacionalidad(String nacionalidad) throws Exception;
 
 	/**
 	 * Devuelve una lista que se mayor/menor de edad X
@@ -81,18 +85,5 @@ public interface FutbolistaDAO {
 	 * @throws Exception No encuentra futbolistas
 	 */
 	ArrayList<Futbolista> getFutbolistaMayorMenorEdad(int edad, String mayorMenor) throws Exception;
-
-	/**
-	 * Ordena un array por edad
-	 * 
-	 * @param futs ArrayList sin ordenar
-	 * @return ArrayList ordenado por Edad
-	 */
-	ArrayList<Futbolista> ordenarPorEdad(ArrayList<Futbolista> futs);
-
-	/**
-	 * Ordena el array por nombre
-	 */
-	void ordenarArray();
 
 }

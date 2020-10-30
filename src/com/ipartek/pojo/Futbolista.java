@@ -91,8 +91,8 @@ public class Futbolista {
 	@Override
 	public String toString() {
 		return String.format(
-				"Id: %s\nNombre: %s\nEdad: %s\nAltura: %s m\nNacionalidad: %s\nEquipo: %s\n----------------------------------",
-				this.id, this.nombre, this.edad, this.altura, this.nacionalidad, this.equipo);
+				"Nombre: %s\nEdad: %s\nAltura: %s m\nNacionalidad: %s\nEquipo: %s\n----------------------------------",
+				this.nombre, this.edad, this.altura, this.nacionalidad, this.equipo);
 	}
 
 }

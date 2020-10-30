@@ -3,7 +3,7 @@ package com.ipartek.apps;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.ipartek.modelo.FutbolistaDAOArrayList;
+import com.ipartek.modelo.FutbolistaDAOSqlite;
 import com.ipartek.pojo.Futbolista;
 
 /**
@@ -34,15 +34,7 @@ public class AppFutbolistas {
 	static final private String ANADIR = "5";
 	static final private String MODIFICAR = "6";
 	static final private String BORRAR = "7";
-	static final private String ORDENAR_LISTA_ALF = "8"; // Ordena alfabeticamente la lista
-	static final private String SALIR = "9";
-
-	/*
-	 * Constante para el método de modificación. Cuando te lista todos los
-	 * jugadores, van de 1 al máximo de coincidencias. Esta constante es el número
-	 * mínimo, es decir 1.
-	 */
-	static final private int MIN_MODIFICAR = 1;
+	static final private String SALIR = "8";
 
 	// Constantes para la modificación
 	static final private int NOMBRE = 1;
@@ -52,8 +44,8 @@ public class AppFutbolistas {
 	static final private int EQUIPO = 5;
 	static final private int NO_MODIFICAR = 6;
 
-	static private ArrayList<Futbolista> futs = new ArrayList<Futbolista>();
-	static private FutbolistaDAOArrayList dao = new FutbolistaDAOArrayList();
+	// static private ArrayList<Futbolista> futs = new ArrayList<Futbolista>();
+	static private FutbolistaDAOSqlite dao = new FutbolistaDAOSqlite();
 	static private Scanner sc = null;
 	static private String opt = "";
 	static private boolean isContinuar = true;
@@ -64,18 +56,16 @@ public class AppFutbolistas {
 
 		sc = new Scanner(System.in);
 
-		try {
-			inicializarLista();
-		} catch (Exception e) {
-			System.err.println("Error: " + e.getMessage());
-		}
-
 		while (isContinuar) {
 			pintarMenu();
 			switch (opt) {
 
 			case LISTA:
-				listar();
+				try {
+					listar();
+				} catch (Exception e) {
+					System.err.println("Error: " + e.getMessage());
+				}
 				break;
 
 			case LISTA_POR_NAC:
@@ -120,10 +110,6 @@ public class AppFutbolistas {
 				} catch (Exception e) {
 					System.err.println("Error: " + e.getMessage());
 				}
-				break;
-
-			case ORDENAR_LISTA_ALF:
-				ordenarListaAlfabeticamente();
 				break;
 
 			case SALIR:
@@ -171,13 +157,6 @@ public class AppFutbolistas {
 	}
 
 	/**
-	 * Ordena la lista alfabéticamente en orden ascendente
-	 */
-	private static void ordenarListaAlfabeticamente() {
-		dao.ordenarArray();
-	}
-
-	/**
 	 * Lista los jugadores que sean mayor o menor de una edad que da el usuario.
 	 * 
 	 * @throws Exception
@@ -200,7 +179,7 @@ public class AppFutbolistas {
 			if (arrayFutOrdenadoPorEdad == null) {
 				System.out.println("No se ha encontrado ningún resultado");
 			} else {
-				arrayFutOrdenadoPorEdad = dao.ordenarPorEdad(arrayFutOrdenadoPorEdad);
+				// arrayFutOrdenadoPorEdad = dao.ordenarPorEdad(arrayFutOrdenadoPorEdad);
 				for (Futbolista fut : arrayFutOrdenadoPorEdad) {
 					System.out.println(fut);
 				}
@@ -217,14 +196,19 @@ public class AppFutbolistas {
 		System.out.println("Introduce una nacionalidad");
 
 		String nac = sc.nextLine();
-		ArrayList<Futbolista> futsNacion = dao.getFutbolistaNacionalidad(nac);
+		ArrayList<Futbolista> futsNacion = null;
+		try {
+			futsNacion = dao.getFutbolistaNacionalidad(nac);
 
-		if (futsNacion.size() == 0) {
-			System.out.println("No se ha encontrado a ningún jugador con dicha nacionalidad");
-		} else {
-			for (Futbolista futbolista : futsNacion) {
-				System.out.println(futbolista);
+			if (futsNacion.size() == 0) {
+				System.out.println("No se ha encontrado a ningún jugador con dicha nacionalidad");
+			} else {
+				for (Futbolista futbolista : futsNacion) {
+					System.out.println(futbolista);
+				}
 			}
+		} catch (Exception e) {
+			System.err.println("Error: " + e.getMessage());
 		}
 	}
 
@@ -245,7 +229,6 @@ public class AppFutbolistas {
 		Futbolista futSeleccionado = new Futbolista();
 		String siNo = "";
 
-		// Busca los futbolistas cuyos nombre contienen el String de búsqueda
 		futCoinciden = dao.buscarFutbolistaPorNombre(busqueda);
 
 		if (!futCoinciden.isEmpty()) {
@@ -255,10 +238,10 @@ public class AppFutbolistas {
 
 				/*
 				 * Muestra el nombre de los futbolistas que coinciden con el parámetro de
-				 * búsqueda con el siguiente formato: 1: jugador1 2: jugador2 ... array.size():
+				 * búsqueda con el siguiente formato: id: jugador1 id: jugador2 ... id:
 				 * jugador(Array.Size())
 				 */
-				System.out.println(i + 1 + ": " + futCoinciden.get(i).getNombre());
+				System.out.println(futCoinciden.get(i).getId() + ": " + futCoinciden.get(i).getNombre());
 			}
 
 			System.out.println("Introduce a quién quieres borrar");
@@ -267,24 +250,26 @@ public class AppFutbolistas {
 				futElegido = Integer.parseInt(sc.nextLine());
 				/*
 				 * Aquí eliges qué futbolista eliges de los que contienen el parámetro de
-				 * búsqueda. El número debe estar entre el 1 y el tamaño del array (ambos
-				 * incluidos), ya que en el bucle anterior va listando de 1 al size() del array.
+				 * búsqueda. Si has metido uno de los id, futSeleccionado contendrá un
+				 * futbolista, sino, será null.
 				 */
-				if (futElegido < 1 || futElegido > futCoinciden.size()) {
+				futSeleccionado = null;
+				for (Futbolista fut : futCoinciden) {
+					if (fut.getId() == futElegido) {
+						futSeleccionado = dao.getFutbolista(futElegido);
+					}
+				}
 
-					throw new Exception(
-							String.format("El número que has introducido no está en el rango indicado: %s y %s",
-									MIN_MODIFICAR, futCoinciden.size()));
-				} else {
-					futSeleccionado = futCoinciden.get(futElegido - 1);
+				if (futSeleccionado != null) {
 
 					System.out.printf("¿Quieres borrar a %s de la lista? (S/N)\n", futSeleccionado.getNombre());
 					siNo = sc.nextLine();
 
 					if (siNo.equalsIgnoreCase("s")) {
 						dao.borrarFutbolista(futSeleccionado.getId());
-						futs = dao.listar();
 					}
+				} else {
+					throw new Exception("No has metido ninguno de los id que estaba en la lista.");
 				}
 			} catch (NumberFormatException e) {
 				throw new Exception("No has introducido un número");
@@ -322,28 +307,30 @@ public class AppFutbolistas {
 
 				/*
 				 * Muestra el nombre de los futbolistas que coinciden con el parámetro de
-				 * búsqueda con el siguiente formato: 1: jugador1 2: jugador2 ... array.size():
+				 * búsqueda con el siguiente formato: id: jugador1 id: jugador2 ... id:
 				 * jugador(Array.Size())
 				 */
-				System.out.println(i + 1 + ": " + futCoinciden.get(i).getNombre());
+				System.out.println(futCoinciden.get(i).getId() + ": " + futCoinciden.get(i).getNombre());
 			}
 
 			System.out.println("Introduce a quién quieres modificar");
 			try {
 
+				futElegido = Integer.parseInt(sc.nextLine());
+
 				/*
 				 * Aquí eliges qué futbolista eliges de los que contienen el parámetro de
-				 * búsqueda. El número debe estar entre el 1 y el tamaño del array (ambos
-				 * incluidos), ya que en el bucle anterior va listando de 1 al size() del array.
+				 * búsqueda. Si has metido uno de los id, futSeleccionado contendrá un
+				 * futbolista, sino, será null.
 				 */
-				futElegido = Integer.parseInt(sc.nextLine());
-				if (futElegido < 1 || futElegido > futCoinciden.size()) {
+				futSeleccionado = null;
+				for (Futbolista fut : futCoinciden) {
+					if (fut.getId() == futElegido) {
+						futSeleccionado = dao.getFutbolista(futElegido);
+					}
+				}
 
-					throw new Exception(
-							String.format("El número que has introducido no está en el rango indicado: %s y %s",
-									MIN_MODIFICAR, futCoinciden.size()));
-				} else {
-					futSeleccionado = futCoinciden.get(futElegido - 1);
+				if (futSeleccionado != null) {
 
 					System.out.printf("El futbolista seleccionado es %s\n", futSeleccionado.getNombre());
 					System.out.println("_______________________________________");
@@ -394,8 +381,12 @@ public class AppFutbolistas {
 
 						}
 
-						dao.modificarFutbolista(futSeleccionado);
 					} while (campoAModificar != NO_MODIFICAR);
+
+					dao.modificarFutbolista(futSeleccionado);
+
+				} else {
+					throw new Exception("No has metido ninguno de los id que estaba en la lista.");
 				}
 			} catch (NumberFormatException e) {
 				throw new Exception("No has introducido un número");
@@ -438,10 +429,16 @@ public class AppFutbolistas {
 
 	/**
 	 * Muestra los datos de la lista de futbolistas
+	 * 
+	 * @throws Exception
 	 */
-	private static void listar() {
-		for (Futbolista futbolista : futs) {
-			System.out.println(futbolista);
+	private static void listar() throws Exception {
+		try {
+			for (Futbolista futbolista : dao.listar()) {
+				System.out.println(futbolista);
+			}
+		} catch (Exception e) {
+			throw e;
 		}
 	}
 
@@ -464,20 +461,10 @@ public class AppFutbolistas {
 		System.out.println("5.- Añadir un futbolista");
 		System.out.println("6.- Modificar un futbolista");
 		System.out.println("7.- Eliminar un futbolista");
-		System.out.println("8.- Ordenar lista alfabéticamente");
-		System.out.println("9.- Salir");
+		System.out.println("8.- Salir");
 		System.out.println("_______________________________________");
 
 		opt = sc.nextLine();
-	}
-
-	/**
-	 * Método para inicializar la lista de futbolistas
-	 * 
-	 * @throws Exception
-	 */
-	private static void inicializarLista() throws Exception {
-		futs = dao.listar();
 	}
 
 }

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class EjemploConexion {
 
 	public static void main(String[] args) throws SQLException {
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:C:/sqlite/concesionario.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:ddbb/concesionario.db");
 
 		String sql = "SELECT * FROM coche;";
 		PreparedStatement pst = conn.prepareStatement(sql);
@@ -21,6 +21,9 @@ public class EjemploConexion {
 		}
 
 		System.out.println("terminamos");
+		pst.close();
+		rs.close();
+		conn.close();
 	}
 
 }

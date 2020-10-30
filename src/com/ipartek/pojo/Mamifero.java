@@ -1,27 +1,14 @@
 package com.ipartek.pojo;
 
-import javax.swing.JOptionPane;
-
 public class Mamifero {
 
+	protected String nombre;
 	private int patas;
-	private String nombre;
-
-	public void imprimirPatas() {
-		JOptionPane.showMessageDialog(null, "Tiene " + patas + " patas \n", nombre, JOptionPane.INFORMATION_MESSAGE);
-	}
 
 	public Mamifero(String nombre) {
+		super();
 		this.nombre = nombre;
-		this.patas = 4;
-	}
-
-	public int getPatas() {
-		return patas;
-	}
-
-	public void setPatas(int patas) {
-		this.patas = patas;
+		this.patas = 0;
 	}
 
 	public String getNombre() {
@@ -32,4 +19,17 @@ public class Mamifero {
 		this.nombre = nombre;
 	}
 
+	public int getPatas() {
+		return patas;
+	}
+
+	public void setPatas(int patas) {
+		this.patas = patas;
+	}
+
+	// sobreescribimos al padre que es java.lnag.Object
+	@Override
+	public String toString() {
+		return "Mamifero [nombre=" + nombre + ", patas=" + patas + "]";
+	}
 }

@@ -318,7 +318,6 @@ public class FutbolistaDAOArrayList implements FutbolistaDAO {
 		return arrayFutOrdenadoPorEdad;
 	}
 
-	@Override
 	public ArrayList<Futbolista> ordenarPorEdad(ArrayList<Futbolista> futs) {
 		Futbolista temp;
 		for (int i = 0; i < futs.size() - 1; i++) {
@@ -333,7 +332,6 @@ public class FutbolistaDAOArrayList implements FutbolistaDAO {
 		return futs;
 	}
 
-	@Override
 	public void ordenarArray() {
 
 		Futbolista temp = new Futbolista();

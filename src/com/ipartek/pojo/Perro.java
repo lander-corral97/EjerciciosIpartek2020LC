@@ -9,54 +9,47 @@ package com.ipartek.pojo;
  *
  */
 
-public class Perro {
+public class Perro extends Mamifero {
 
-	// Atributos
-	// La forma de manipular atributos es a través
-	// de Setters y Getters.
-	/////////////////////////////////////////////////////
-	private String nombre;
+	// Atributos, deben ser siempre privados
+	// la forma de manipular estos atributos es a traves de los getteres y settres
+	///////////////////////////////////////
+	private int id;
 	private String raza;
 	private float peso;
 	private boolean isVacunado;
 	private String historia;
 
-	// Constructor
-	/////////////////////////////////////////////////////
+	// Constructores
+	///////////////////////////////////////
 	public Perro() {
-		super();
-		this.nombre = "Sin Nombre";
+		super("Sin nombre");
+		this.id = 0;
 		this.raza = "Cruce";
 		this.peso = 0f;
 		this.isVacunado = false;
-		this.historia = "-";
+		this.historia = "Erase una vez....";
 	}
 
-	// Otro constructor (Sobrecarga)
-	/////////////////////////////////////////////////////
+	// otro constructor sobrecargado
+
 	public Perro(String nombre) {
-		this(); // Llama al constructor por defecto
-		this.nombre = nombre;
+		super(nombre);
+		this.id = 0;
+		this.raza = "Cruce";
+		this.peso = 0f;
+		this.isVacunado = false;
+		this.historia = "Erase una vez....";
 	}
 
-	// Getters y Setters
-	/////////////////////////////////////////////////////
-
-	public String getHistoria() {
-		return historia;
+	public Perro(String nombre, String raza, float peso) {
+		this(nombre);
+		this.raza = raza;
+		this.peso = peso;
 	}
 
-	public void setHistoria(String historia) {
-		this.historia = historia;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+	// Getters y setters
+	///////////////////////////////////////
 
 	public String getRaza() {
 		return raza;
@@ -84,6 +77,28 @@ public class Perro {
 
 	public void setVacunado(boolean isVacunado) {
 		this.isVacunado = isVacunado;
+	}
+
+	public String getHistoria() {
+		return historia;
+	}
+
+	public void setHistoria(String historia) {
+		this.historia = historia;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Perro [id=" + id + ", raza=" + raza + ", peso=" + peso + ", isVacunado=" + isVacunado + ", historia="
+				+ historia + ", getNombre()=" + getNombre() + ", getPatas()=" + getPatas() + "]";
 	}
 
 	// HashCode ???
