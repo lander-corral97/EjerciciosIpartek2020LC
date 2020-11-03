@@ -12,6 +12,18 @@ import com.ipartek.pojo.Futbolista;
 public class FutbolistaDAOSqlite implements FutbolistaDAO {
 
 	private static final String DRIVER_URL = "jdbc:sqlite:ddbb/futbolista.db";
+	private static FutbolistaDAOSqlite INSTANCE = null;
+
+	private FutbolistaDAOSqlite() {
+		super();
+	}
+
+	public synchronized static FutbolistaDAOSqlite getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new FutbolistaDAOSqlite();
+		}
+		return INSTANCE;
+	}
 
 	@Override
 	public ArrayList<Futbolista> listar() throws Exception {

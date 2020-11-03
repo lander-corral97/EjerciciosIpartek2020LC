@@ -45,7 +45,7 @@ public class AppFutbolistas {
 	static final private int NO_MODIFICAR = 6;
 
 	// static private ArrayList<Futbolista> futs = new ArrayList<Futbolista>();
-	static private FutbolistaDAOSqlite dao = new FutbolistaDAOSqlite();
+	static private FutbolistaDAOSqlite dao = FutbolistaDAOSqlite.getInstance();
 	static private Scanner sc = null;
 	static private String opt = "";
 	static private boolean isContinuar = true;
