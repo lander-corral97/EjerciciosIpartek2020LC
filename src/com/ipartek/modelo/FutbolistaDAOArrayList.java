@@ -200,7 +200,7 @@ public class FutbolistaDAOArrayList implements FutbolistaDAO {
 	}
 
 	@Override
-	public Futbolista getFutbolista(int id) {
+	public Futbolista get(int id) {
 		Futbolista futbolista = new Futbolista();
 		futbolista.setId(-1);
 		for (Futbolista fut : futs) {
@@ -216,7 +216,7 @@ public class FutbolistaDAOArrayList implements FutbolistaDAO {
 	}
 
 	@Override
-	public Futbolista nuevoFutbolista(Futbolista fut) throws Exception {
+	public Futbolista nuevo(Futbolista fut) throws Exception {
 		int idFut = -1;
 
 		// Coger el id del siguiente futbolista
@@ -245,10 +245,10 @@ public class FutbolistaDAOArrayList implements FutbolistaDAO {
 	}
 
 	@Override
-	public Futbolista modificarFutbolista(Futbolista fut) throws Exception {
+	public Futbolista modificar(Futbolista fut) throws Exception {
 		int index = 0;
 
-		if (this.getFutbolista(fut.getId()) != null) {
+		if (this.get(fut.getId()) != null) {
 			throw new Exception("No existe el futbolista");
 		}
 
@@ -262,10 +262,10 @@ public class FutbolistaDAOArrayList implements FutbolistaDAO {
 	}
 
 	@Override
-	public boolean borrarFutbolista(int id) {
+	public boolean borrar(int id) {
 		int index = 0;
 
-		if (this.getFutbolista(id) == null) {
+		if (this.get(id) == null) {
 			return false;
 		}
 

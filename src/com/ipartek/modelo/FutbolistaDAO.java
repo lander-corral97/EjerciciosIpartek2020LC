@@ -10,33 +10,7 @@ import com.ipartek.pojo.Futbolista;
  * @author LANDER
  * @version 1.0
  */
-public interface FutbolistaDAO {
-
-	/**
-	 * Lista de futbolistas
-	 * 
-	 * @return Array con los futbolistas
-	 * @throws Exception Si la edad o altura del futbolista es incorrecta
-	 */
-	ArrayList<Futbolista> listar() throws Exception;
-
-	/**
-	 * Devuelve el futbolista con dicho id
-	 * 
-	 * @param id Identificador
-	 * @return Futbolista cuyo id es {@code id} o null
-	 * @throws Exception Si hay un problema con la BBDD
-	 */
-	Futbolista getFutbolista(int id) throws Exception;
-
-	/**
-	 * Crea un nuevo Futbolista y los mete en el array
-	 * 
-	 * @param fut Futbolista a introducir en la lista
-	 * @return Futbolista introducido
-	 * @throws Exception Si el futbolista ya está en el array
-	 */
-	Futbolista nuevoFutbolista(Futbolista fut) throws Exception;
+public interface FutbolistaDAO extends DAO<Futbolista> {
 
 	/**
 	 * Se introduce un parámetro de búsqueda para sacar un array con los datos que
@@ -48,24 +22,6 @@ public interface FutbolistaDAO {
 	 * @throws Exception Si hay un problema con la BBDD
 	 */
 	ArrayList<Futbolista> buscarFutbolistaPorNombre(String busqueda) throws Exception;
-
-	/**
-	 * Introduce los nuevos datos del futbolista y los reemplaza por los nuevos
-	 * 
-	 * @param fut Futbolista a modificar
-	 * @return Futbolista modificado
-	 * @throws Exception Si no encuentra al futbolista o no existe.
-	 */
-	Futbolista modificarFutbolista(Futbolista fut) throws Exception;
-
-	/**
-	 * Borra el futbolista con dicho id
-	 * 
-	 * @param id Identificador
-	 * @return true; si borra, false; si no borra
-	 * @throws Exception Si hay un problema con la BBDD
-	 */
-	boolean borrarFutbolista(int id) throws Exception;
 
 	/**
 	 * Devuelve una lista con dicha nacionalidad

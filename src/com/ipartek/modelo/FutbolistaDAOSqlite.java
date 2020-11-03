@@ -44,7 +44,7 @@ public class FutbolistaDAOSqlite implements FutbolistaDAO {
 	}
 
 	@Override
-	public Futbolista getFutbolista(int id) throws Exception {
+	public Futbolista get(int id) throws Exception {
 		Futbolista fut = null;
 		String sql = "Select * From futbolista Where id = ?";
 
@@ -76,7 +76,7 @@ public class FutbolistaDAOSqlite implements FutbolistaDAO {
 	}
 
 	@Override
-	public Futbolista nuevoFutbolista(Futbolista fut) throws Exception {
+	public Futbolista nuevo(Futbolista fut) throws Exception {
 		String sql = "Insert into futbolista (nombre ,edad ,altura ,nacionalidad ,equipo) Values (?, ?, round(?, 2), ?, ?);";
 
 		try (Connection cnn = DriverManager.getConnection(DRIVER_URL);
@@ -142,7 +142,7 @@ public class FutbolistaDAOSqlite implements FutbolistaDAO {
 	}
 
 	@Override
-	public Futbolista modificarFutbolista(Futbolista fut) throws Exception {
+	public Futbolista modificar(Futbolista fut) throws Exception {
 		String sql = "Update futbolista set nombre = ?, edad = ?, altura = round(?, 2), nacionalidad = ?, equipo = ? Where id = ?;";
 
 		try (Connection cnn = DriverManager.getConnection(DRIVER_URL);
@@ -167,7 +167,7 @@ public class FutbolistaDAOSqlite implements FutbolistaDAO {
 	}
 
 	@Override
-	public boolean borrarFutbolista(int id) throws Exception {
+	public boolean borrar(int id) throws Exception {
 		boolean resul = false;
 		String sql = "Delete From futbolista Where id = ?;";
 

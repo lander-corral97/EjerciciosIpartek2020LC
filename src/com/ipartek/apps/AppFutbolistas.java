@@ -141,7 +141,7 @@ public class AppFutbolistas {
 		try {
 
 			id = Integer.parseInt(sc.nextLine());
-			futConId = dao.getFutbolista(id);
+			futConId = dao.get(id);
 
 			if (futConId == null) {
 				System.out.println("No se ha encontrado un futbolista con dicho id");
@@ -256,7 +256,7 @@ public class AppFutbolistas {
 				futSeleccionado = null;
 				for (Futbolista fut : futCoinciden) {
 					if (fut.getId() == futElegido) {
-						futSeleccionado = dao.getFutbolista(futElegido);
+						futSeleccionado = dao.get(futElegido);
 					}
 				}
 
@@ -266,7 +266,7 @@ public class AppFutbolistas {
 					siNo = sc.nextLine();
 
 					if (siNo.equalsIgnoreCase("s")) {
-						dao.borrarFutbolista(futSeleccionado.getId());
+						dao.borrar(futSeleccionado.getId());
 					}
 				} else {
 					throw new Exception("No has metido ninguno de los id que estaba en la lista.");
@@ -326,7 +326,7 @@ public class AppFutbolistas {
 				futSeleccionado = null;
 				for (Futbolista fut : futCoinciden) {
 					if (fut.getId() == futElegido) {
-						futSeleccionado = dao.getFutbolista(futElegido);
+						futSeleccionado = dao.get(futElegido);
 					}
 				}
 
@@ -383,7 +383,7 @@ public class AppFutbolistas {
 
 					} while (campoAModificar != NO_MODIFICAR);
 
-					dao.modificarFutbolista(futSeleccionado);
+					dao.modificar(futSeleccionado);
 
 				} else {
 					throw new Exception("No has metido ninguno de los id que estaba en la lista.");
@@ -419,7 +419,7 @@ public class AppFutbolistas {
 			System.out.println("Introduce el equipo");
 			fut.setEquipo(sc.nextLine());
 
-			dao.nuevoFutbolista(fut);
+			dao.nuevo(fut);
 		} catch (NumberFormatException e) {
 			throw new Exception("No has introducido un número");
 		} catch (Exception e) {
