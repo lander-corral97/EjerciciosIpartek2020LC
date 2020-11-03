@@ -9,7 +9,9 @@ package com.ipartek.pojo;
  *
  */
 
-public class Perro extends Mamifero {
+public class Perro extends Mamifero implements Comparable<Perro> {
+
+	public static final String RAZA_POR_DEFECTO = "cruce";
 
 	// Atributos, deben ser siempre privados
 	// la forma de manipular estos atributos es a traves de los getteres y settres
@@ -25,7 +27,7 @@ public class Perro extends Mamifero {
 	public Perro() {
 		super("Sin nombre");
 		this.id = 0;
-		this.raza = "Cruce";
+		this.raza = RAZA_POR_DEFECTO;
 		this.peso = 0f;
 		this.isVacunado = false;
 		this.historia = "Erase una vez....";
@@ -36,16 +38,24 @@ public class Perro extends Mamifero {
 	public Perro(String nombre) {
 		super(nombre);
 		this.id = 0;
-		this.raza = "Cruce";
+		this.raza = RAZA_POR_DEFECTO;
 		this.peso = 0f;
 		this.isVacunado = false;
 		this.historia = "Erase una vez....";
 	}
 
+	public Perro(int id, String nombre) {
+		this(nombre);
+		this.id = id;
+	}
+
 	public Perro(String nombre, String raza, float peso) {
 		this(nombre);
-		this.raza = raza;
-		this.peso = peso;
+		// CUIDADO si tienen algo espcial los settres usarlos
+		// this.raza = raza;
+		this.setRaza(raza);
+		// this.peso = peso;
+		this.setPeso(peso);
 	}
 
 	// Getters y setters
@@ -55,8 +65,23 @@ public class Perro extends Mamifero {
 		return raza;
 	}
 
+	/**
+	 * Comprobamos que sea una raza valida, si es null o vacio usamos la constante
+	 * RAZA_POR_DEFECTO
+	 * 
+	 * @param raza
+	 */
 	public void setRaza(String raza) {
-		this.raza = raza;
+		if (raza != null) {
+
+			if (raza.trim().isEmpty()) {
+				raza = RAZA_POR_DEFECTO;
+			}
+			this.raza = raza;
+
+		} else {
+			this.raza = RAZA_POR_DEFECTO;
+		}
 	}
 
 	public float getPeso() {
@@ -101,31 +126,10 @@ public class Perro extends Mamifero {
 				+ historia + ", getNombre()=" + getNombre() + ", getPatas()=" + getPatas() + "]";
 	}
 
-	// HashCode ???
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		return result;
+	public int compareTo(Perro o) {
+		return (int) (this.peso - o.getPeso());
 	}
 
-	// Equals, comprueba si es igual en base a uno o varios campos
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Perro other = (Perro) obj;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
-			return false;
-		return true;
-	}
-
+	// Otros metodos
 }
