@@ -48,7 +48,7 @@ public interface PerroDAO {
 	 * Elimina el Perro gracias a su id
 	 * 
 	 * @param id Identificador
-	 * @throws Exception TODO Hasta que veamos BBDD
+	 * @throws Exception
 	 * @return true si elimina, false en caso contrario
 	 */
 	boolean eliminar(int id) throws Exception;
