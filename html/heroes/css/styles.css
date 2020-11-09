@@ -1,31 +1,125 @@
 /* Nuestra hoja de estilos */
 
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Variables globales */
+
+:root {
+    --negro: #000;
+    --azul: #008;
+    --rojo: #F00;
+    --blanco: #FFF;
+    --granate: #B00000;
+    --azulClaro: #03A9F4;
+}
+
+/* Estilos a todas las etiquetas */
+
+body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2rem;
+    color: var(--negro);
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 h1 {
     text-align: center;
     text-transform: capitalize;
+    margin: 15px 0;
+}
+
+h2, h3, h4, h5, h6 {
+    margin: 15px 0;
+}
+
+header, main, footer {
+    max-width: 1024px;
+    margin: auto; /* Centrar el contenido */
+    box-sizing: border-box;
 }
 
 header {
-    /*background-color: peru;*/
-
-    /*
-        Prefijos para dar soporte a diferentes navegadores
-
-            -moz- Firefox
-            -webkit- Chrome, Safari, ...
-            -ms- Microsoft (IE)
-            -o- Opera
-    */
-    background-image: -webkit-linear-gradient(top, #D7D 0%, #068 100%);
-    color: white;
+    background-color: pink;
 }
 
-section {
-    max-width: 1024;
-    margin: 0 auto;
+main {
     background-color: lime;
+    padding: 1rem;
+    position: relative;
 }
 
 footer {
     background-color: pink;
+}
+
+header nav {
+    background-color: var(--azul);
+    color: var(--blanco);
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 15px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    background-color: var(--azulClaro);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+header nav a {
+    color: var(--rojo);
+    padding: 12px;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+header nav a:visited {
+    color: var(--granate);
+}
+
+article {
+    border: 1px solid var(--negro);
+    padding: 5px;
+
+    flex-grow: 2;
+    width: 50%;
+    max-width: 50%;
+}
+
+article img {
+    width: 50%;
+}
+
+.left {
+    float: left;
+    width: 48%;
+    height: 100%;
+}
+
+.right {
+    float: right;
+    width: 48%;
+    height: 100%;
+}
+
+footer table {
+    width: 100%;
 }
