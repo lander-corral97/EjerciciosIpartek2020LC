@@ -1,7 +1,23 @@
 /* Nuestra hoja de estilos */
 
+h1 {
+    text-align: center;
+    text-transform: capitalize;
+}
+
 header {
-    background-color: peru;
+    /*background-color: peru;*/
+
+    /*
+        Prefijos para dar soporte a diferentes navegadores
+
+            -moz- Firefox
+            -webkit- Chrome, Safari, ...
+            -ms- Microsoft (IE)
+            -o- Opera
+    */
+    background-image: -webkit-linear-gradient(top, #D7D 0%, #068 100%);
+    color: white;
 }
 
 section {

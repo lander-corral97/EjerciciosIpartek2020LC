@@ -1,0 +1,24 @@
+span {
+    color: red;
+}
+
+p a {
+    color: seagreen;
+    text-decoration: none;
+}
+
+.classSel {
+    font-weight: bold;
+    text-decoration: underline;
+    font-style: normal;
+}
+
+#oneId {
+    text-transform: uppercase;
+    background-color: yellow;
+    color: red;
+}
+
+.noMargin {
+    margin: 0;
+}

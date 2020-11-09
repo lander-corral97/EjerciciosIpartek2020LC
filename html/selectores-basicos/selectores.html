@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <h1>Selectores de etiqueta</h1>
+    <p>Selectores sólo para una etiqueta: <span>Ejemplo</span></p>
+    <hr>
+    <h1>Selectores descendentes</h1>
+    <p>Selectores para marcar una etiqueta dentro de otra: <a href="">Este a está dentro de un p, por lo tanto, estará
+            en verde y no estará subrayado</a></p>
+    <div><a href="">Sin embargo, este saldrá azul (o morado si ya hemos accedido) y subrayado</a></div>
+    <hr>
+    <h1>Selectores de <em class="classSel">clase</em></h1>
+    <p>Selectores que sólo afectarán a una <em class="classSel">clase</em>, da igual que <span class="classSel">etiqueta
+            (aquí hereda de la clase y del span</span>, pero aquí no, ya que no está ni en la clase, ni en el span)</p>
+    <hr>
+    <h1>Selectores de <em class="classSel">id</em></h1>
+    <p class="noMargin">Aquí hay varios párrafos,</p>
+    <p class="noMargin">sin embargo, </p>
+    <p class="noMargin" id="oneId">sólo uno</p>
+    <p class="noMargin">tiene estilo, </p>
+    <p class="noMargin">que es el que tiene id</p>
+</body>
+
+</html>
