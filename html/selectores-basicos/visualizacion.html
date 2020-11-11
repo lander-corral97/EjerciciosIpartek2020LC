@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizacion</title>
+    <style>
+        /* Visibilidad y Display */
+
+        #dv .container {
+            display: flex;
+            background-color: pink;
+        }
+
+        #dv .container div {
+            width: 50%;
+            border: 1px solid grey;
+        }
+
+        .box {
+            background-color: orange;
+            font-size: 2rem;
+            text-align: center;
+
+            display: inline-block;
+            width: 25%;
+
+            margin: 10px;
+
+            border: 1px solid red;
+        }
+
+        #dv .container div:first-of-type .box:nth-child(5) {
+            display: none;
+        }
+
+        #dv .container div:last-of-type .box:nth-child(5) {
+            visibility: hidden;
+        }
+
+        /* Overflow */
+
+        #ov div {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            padding: 10px;
+            background-color: lightblue;
+        }
+
+        #ov .visible {
+            overflow: visible;
+        }
+
+        #ov .hidden {
+            overflow: hidden;
+        }
+
+        #ov .scroll {
+            overflow: scroll;
+        }
+
+        /* z-index */
+
+        .caja {
+            display: inline-block;
+            width: 300px;
+            height: 150px;
+            background-color: aquamarine;
+            border: 1px solid grey;
+            position: relative;
+        }
+
+        .orange {
+            background-color: orange;
+            left: -80px;
+            top: 10px;
+        }
+
+        .green {
+            background-color: green;
+            top: -120px;
+            left: 65px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visualizacion</h1>
+    <a href="https://uniwebsidad.com/libros/css/capitulo-5/visualizacion" target="_blank" >Documentación de Uniwebsidad</a>
+    <p>Vamos a ver las siguientes propiedades: <b>display</b>, <b>visibility</b>, <b>overflow</b> y <b>z-index</b></p>
+    <section id="dv">
+        <h2>Display y Visibility</h2>
+        <div class="container">
+            <div>
+                <span class="box">1</span>
+                <span class="box">2</span>
+                <span class="box">3</span>
+                <span class="box">4</span>
+                <span class="box">5</span>
+                <span class="box">6</span>
+                <span class="box">7</span>
+                <span class="box">8</span>
+                <span class="box">9</span>
+            </div>
+            <div>
+                <span class="box">1</span>
+                <span class="box">2</span>
+                <span class="box">3</span>
+                <span class="box">4</span>
+                <span class="box">5</span>
+                <span class="box">6</span>
+                <span class="box">7</span>
+                <span class="box">8</span>
+                <span class="box">9</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="ov">
+        <h2>Overflow</h2>
+        <div class="visible">
+            <h3>Overflow</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique dicta sapiente accusantium ut. Inventore explicabo quis, officia enim iure doloremque nesciunt officiis quo quos porro, praesentium a, perspiciatis ea quibusdam!</p>
+        </div>
+        <div class="hidden">
+            <h3>Hidden</h3>
+            <p>Ipsam mollitia soluta id, quisquam nisi laborum. Maiores quia doloremque illo. Cumque labore libero eligendi, sit, deleniti voluptatum fugit expedita, numquam nisi quis incidunt nam consequuntur. Iure ex quo beatae.</p>
+        </div>
+        <div class="scroll">
+            <h3>Scroll</h3>
+            <p>Nobis consequuntur quibusdam ratione repellat! Illo delectus cupiditate quasi repellat perferendis vitae eum aut soluta necessitatibus quisquam est nulla, culpa ut minima quos quas, itaque odio beatae, sit ab temporibus?</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>z-index</h2>
+        <div class="caja"></div>
+        <div class="caja orange"></div>
+        <div class="caja green"></div>
+    </section>
+</body>
+</html>

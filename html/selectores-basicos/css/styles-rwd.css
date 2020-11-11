@@ -1,0 +1,118 @@
+:root {
+    /* breakpoint para RWD */
+    --breakpoint-movil: 425px;
+    --breakpoint-table: 768px;
+    --breakpoint-laptop: 1024px;
+
+    --gray: #B6C8CA;
+    --blue: #2DADB8;
+    --orange: #FB601E;
+    --lightOrange: #F0A647;
+    --lightGray: #F1F2F3;
+}
+
+h1, h2 {
+    color: var(--gray);
+}
+
+/* Primero vamos a diseñar para 
+ laptop y luego nos iremos adaptando
+ a los dispositivos más pequeños */
+
+/* LAPTOP: 1024px */
+
+header, main, footer {
+    max-width: var(--breakpoint-laptop);
+    margin: auto;
+}
+
+header {
+    display: flex;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .menu-left {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+header .menu-right {
+    width: 60%;
+}
+
+header .menu-right ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    display: inline-block;
+    height: 50px; 
+    width: 50px;
+    border-radius: 50%;
+    background-color: var(--gray);
+}
+
+li {
+    list-style: none;
+    background-color: var(--gray);
+    padding: 10px 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+main article {
+    width:30%;
+    background-color: var(--lightGray);
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.imagen {
+    width: 100%;
+    height: 75px;
+    background-color: var(--orange);
+}
+
+.blue {
+    background-color: var(--blue);
+}
+
+.orange {
+    background-color: var(--lightOrange);
+}
+
+/* TABLET: 768px */
+
+@media (max-width: 768px) {
+
+    main {
+        flex-wrap: wrap;
+    }
+
+    main article {
+        width: 48%;
+        margin-bottom: 2em;
+    }
+
+}
+
+/* MOBILE: 425px */
+
+@media (max-width: 425px) {
+
+    main article {
+        width: 100%;
+    }
+
+    header .menu-right ul {
+        flex-wrap: wrap;
+    }
+}

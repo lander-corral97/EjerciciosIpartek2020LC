@@ -2,151 +2,266 @@
 
 /* Reset */
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* Variables globales */
 
 :root {
-    --primary: rgb(236, 29, 36);
-    --accent: #0091FF;
-    --white: #FFF;
-    --lightGray: #F7F7F7;
-    --darkGray: #202020;
-    --black: #000;
-    --footerHover: #BBB;
+  --primary: rgb(236, 29, 36);
+  --accent: #0091ff;
+  --white: #fff;
+  --lightGray: #f7f7f7;
+  --darkGray: #202020;
+  --black: #000;
+  --footerHover: #bbb;
+
+  --breakpoint-movil: 425px;
 }
 
 /* Estilos a todas las etiquetas */
 
+/* Etiquetas "sueltas" */
+
 body {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16.8px;
-    color: var(--darkGray);
-    text-align: justify;
-    font-family: "Roboto Bold", "Trebuchet MS", Helvetica, Arial, sans-serif;
-    background-color: var(--darkGray);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.8px;
+  color: var(--darkGray);
+  text-align: justify;
+  font-family: "Roboto Bold", "Trebuchet MS", Helvetica, Arial, sans-serif;
+  background-color: var(--darkGray);
 }
 
 h1 {
-    text-align: center;
-    text-transform: capitalize;
-    margin: 15px 0;
-    color: var(--primary);
+  text-align: center;
+  text-transform: capitalize;
+  margin: 15px 0;
+  color: var(--primary);
 }
 
-h2, h3, h4, h5, h6 {
-    text-align: center;
-    margin: 15px 0;
-    color: var(--primary);
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+  margin: 15px 0;
+  color: var(--primary);
 }
 
 a {
-    transition: 0.7s;
-    color: var(--white);
-    padding: 12px;
-    text-decoration: none;
-    font-weight: normal;
+  transition: 0.7s;
+  color: var(--white);
+  padding: 12px;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 a:visited {
-    color: var(--white);
+  color: var(--white);
 }
 
-header, main, footer > div, nav ul {
-    max-width: 1024px;
-    margin: auto; /* Centrar el contenido */
-    box-sizing: border-box;
+ul li {
+    list-style: none; /* Quita los puntos de la lista */
 }
 
-main {
-    background-color: var(--lightGray);
-    padding: 1rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
+p {
+  margin-bottom: 15px;
 }
 
-footer {
-    background-color: var(--darkGray);
-    border-top: 1px solid var(--black);
+/* Anchura y márgenes de cada una de las secciones principales */
+
+header,
+main,
+footer > div,
+nav ul {
+  max-width: 1024px;
+  margin: auto; /* Centrar el contenido */
+  box-sizing: border-box;
 }
+
+/* Etiquetas del nav */
 
 nav {
-    background-color: var(--primary);
-    color: var(--darkGray);
+  background-color: var(--primary);
+  color: var(--darkGray);
 
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
 }
 
 nav ul {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 nav ul li {
-    list-style: none; /* Quita los puntos de la lista */
-    padding: 15px;
-    font-weight: bold;
+  padding: 15px;
+  font-weight: bold;
 }
 
 nav a:hover {
-    transition: 0.7s;
-    background-color: var(--accent);
-    text-decoration: underline;
-    cursor: pointer;
+  transition: 0.7s;
+  background-color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-main section {
-    display: flex;
+/* Etiquetas del main */
+
+main {
+  background-color: var(--lightGray);
+  padding: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-article {
-    border: 1px solid var(--darkGray);
-    padding: 5px;
-    margin: 5px;
-    width: 50%;
+main section, main {
+  display: flex;
+}
+
+main article {
+  border: 1px solid var(--darkGray);
+  padding: 5px;
+  margin: 5px;
+  width: 50%;
 }
 
 .left img {
-    width: 50%;
+  width: 50%;
 }
 
 .right img {
+  display: block;
+  margin: auto;
+}
+
+/* Etiquetas del footer */
+
+footer {
+  background-color: var(--darkGray);
+  border-top: 1px solid var(--black);
+}
+
+footer div {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer ul li {
+  padding-left: 15px;
+}
+
+.flexImg {
+  display: flex;
+}
+
+footer div div img {
+  align-self: center;
+}
+
+footer div div img:first-of-type {
+  border-radius: 50%;
+}
+
+footer a,
+footer a:visited {
+  transition: 0.5s;
+  color: var(--white);
+}
+
+footer a:hover {
+  transition: 0.5s;
+  color: var(--footerHover);
+}
+
+/* Páginas de heroes.html y villanos.html */
+
+/* Enlace */
+#click {
+    color: var(--primary);
+    padding: 0px 0px 0px 12px;
+}
+
+/* divs, todos ocultos, para que al clickar en el enlace aparezcan en el nav */
+.hidden {
+    display: none;
+    padding: 10px;
+}
+
+.hidden img {
     display: block;
     margin: auto;
 }
 
-footer div {
-    display: flex;
-    justify-content: space-between;
+/* Acciones de los enlaces. (Hacen aparecer los divs correspondientes) */
+#show1:target {
+    display: block;
 }
 
-footer ul li {
-    list-style: none;
-    padding-left: 15px;
+#show2:target {
+    display: block;
 }
 
-.flexImg {
-    display: flex;
+#show3:target {
+    display: block;
 }
 
-footer div div img {
-    align-self: center;
+#show4:target {
+    display: block;
 }
 
-footer div div img:first-of-type {
-    border-radius: 50%;
+#show5:target {
+    display: block;
 }
 
-footer a, footer a:visited {
-    transition: 0.5s;
-    color: var(--white);
+#show6:target {
+    display: block;
 }
 
-footer a:hover {
-    transition: 0.5s;
-    color: var(--footerHover);
+#show7:target {
+    display: block;
+}
+
+#show8:target {
+    display: block;
+}
+
+#show9:target {
+    display: block;
+}
+
+#show10:target {
+    display: block;
+}
+
+/* Media */
+
+@media (max-width: 425px) {
+
+  nav ul li {
+    padding: 12px 0;
+  }
+
+  /* Para el index */
+
+  main section {
+    flex-wrap: wrap;
+  }
+
+  main section article {
+    width: 100%;
+  }
+
+  /* Para las de Héroes y Villanos */
+
+  main {
+    flex-wrap: wrap;
+  }
+
+  main > article {
+    width: 100%;
+  }
 }
