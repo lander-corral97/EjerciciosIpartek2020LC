@@ -1,0 +1,128 @@
+/* Variables */
+
+:root {
+    --lightPapyrus: #F8F5E6;
+    --papyrus: #FBFCDD;
+    --darkPapyrus: hsl(30, 47%, 60%);
+}
+
+/* Body */
+
+body {
+    background-color: var(--papyrus);
+    font-family: Arial, sans-serif;
+}
+
+/* Etiquetas generales */
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: var(--darkPapyrus);
+}
+
+ul li {
+    list-style: none;
+}
+
+header,
+main,
+footer div,
+nav ul {
+    max-width: 1024px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+/* nav */
+
+nav {
+    border-top: 1px solid var(--darkPapyrus);
+    border-bottom: 1px solid var(--darkPapyrus);
+    padding: 15px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul li a  {
+    padding: 10px;
+    transition: 0.5s;
+}
+
+nav ul li a:hover {
+    background-color: var(--darkPapyrus);
+    color: var(--papyrus);
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+/* main */
+
+main {
+    margin: 10px auto;
+    display: flex;
+    background-color: var(--lightPapyrus);
+}
+
+main article {
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid var(--darkPapyrus);
+    text-align: justify;
+}
+
+main article.left, main article.right {
+    width: 48%;
+}
+
+/* footer */
+
+footer {
+    border-top: 1px solid var(--darkPapyrus);
+    color: var(--darkPapyrus);
+    padding-top: 5px;
+}
+
+/* Clases */
+
+.right img, .solo img {
+    width: 45%;
+    margin: 5px;
+}
+
+.solo div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.left img {
+    display: block;
+    margin: auto;
+}
+
+.return, .return:visited {
+    background-color: var(--papyrus);
+    color: var(--darkPapyrus);
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+    border-radius: 5px;
+    border: 1px solid var(--darkPapyrus);
+    padding: 5px;
+    transition: 0.5s;
+}
+
+.return:hover {
+    background-color: var(--darkPapyrus);
+    color: var(--papyrus);
+    border: 0px;
+    transition: 0.5s;
+}

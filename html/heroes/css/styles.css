@@ -51,6 +51,11 @@ h6 {
   color: var(--primary);
 }
 
+table caption{
+  color: var(--primary);
+  font-weight: bold;
+}
+
 a {
   transition: 0.7s;
   color: var(--white);
@@ -69,6 +74,15 @@ ul li {
 
 p {
   margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+}
+
+td img {
+  width: 210px;
+  height: 360px;
 }
 
 /* Anchura y márgenes de cada una de las secciones principales */
@@ -129,6 +143,20 @@ main article {
   width: 50%;
 }
 
+main .acercaDe {
+  width: 100%;
+}
+
+/* Clases en los diferentes main */
+
+.mainComics {
+  text-align: center;
+}
+
+.acercaDe h2 {
+  text-align: left;
+}
+
 .left img {
   width: 50%;
 }
@@ -187,8 +215,11 @@ footer a:hover {
 
 /* divs, todos ocultos, para que al clickar en el enlace aparezcan en el nav */
 .hidden {
-    display: none;
-    padding: 10px;
+    overflow: hidden;
+    height: 0px;
+    transition: height 1s ease-in-out;
+    -webkit-transition: height 1s ease-in-out;
+    -moz-transition: height 1s ease-in-out;
 }
 
 .hidden img {
@@ -197,43 +228,10 @@ footer a:hover {
 }
 
 /* Acciones de los enlaces. (Hacen aparecer los divs correspondientes) */
-#show1:target {
-    display: block;
-}
-
-#show2:target {
-    display: block;
-}
-
-#show3:target {
-    display: block;
-}
-
-#show4:target {
-    display: block;
-}
-
-#show5:target {
-    display: block;
-}
-
-#show6:target {
-    display: block;
-}
-
-#show7:target {
-    display: block;
-}
-
-#show8:target {
-    display: block;
-}
-
-#show9:target {
-    display: block;
-}
-
-#show10:target {
+#show1:target, #show2:target, #show3:target, #show4:target, #show5:target,
+#show6:target, #show7:target, #show8:target, #show9:target, #show10:target {
+    height: 100%;
+    padding: 10px;
     display: block;
 }
 
