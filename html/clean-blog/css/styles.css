@@ -1,0 +1,65 @@
+/* La lista de la cabecera ponerla en horizontal con un fondo azul */
+nav ul {
+    display: flex !important;
+    justify-content: space-between;
+    background-color: blue;
+}
+
+/* Todo el texto de la página estará con la misma fuente, en este caso san serif */
+/* El color del fondo de la página será gris claro a elección del alumno */
+body {
+    font-family: sans-serif;
+    background-color: lightgray;
+}
+
+/* Todos los párrafos tendrán un tamaño de letra de 12 pixeles */
+p {
+    font-size: 12px !important;
+}
+
+table {
+    margin: auto;
+    width:50%;
+}
+
+/* La cabecera de la tabla será de color azul oscuro, mientras que las filas se alternaran entre
+blancas y azul más claro */
+table thead {
+    background-color: darkblue;
+    color: white;
+}
+
+table tbody tr:nth-of-type(odd) {
+    background-color: white;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: lightblue;
+}
+
+/* Las cabeceras H1 tendrán color azul oscuro y tamaño de 25 pixeles */
+h1 {
+    color: darkblue;
+    font-size: 25px !important;
+}
+
+/* Los enlaces visitados estarán coloreados de lila */
+a:visited {
+    color: #c8a2c8;
+}
+
+/* Al posicionarse en un enlace se mostrará en rojo */
+a:hover {
+    color: red !important;
+}
+
+/* Todos los enlaces tendrán el texto en negrita */
+a {
+    font-weight: bold !important;
+}
+
+/* La imagen estará centrada */
+img {
+    position: relative;
+    left: 50%;
+}
